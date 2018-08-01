@@ -11,3 +11,5 @@
 - [REST API TypeScript using example](./node-js/nestjs-rest-api)
 
 ### Go
+
+- [Simple Stripe wrapper](./golang/go-stripe)
