@@ -1,0 +1,8 @@
+api:
+  port: ":3002"
+database:
+  dialect: "postgres"
+  host: "localhost"
+  user: "postgres"
+  db: "insake_accounts"
+  password: "postgres"

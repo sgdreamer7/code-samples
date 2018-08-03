@@ -1,0 +1,177 @@
+openapi: 3.0.0
+info:
+  title: Insake accounts service
+  description: Insake accounts service is responsible for accounts data management. It works with isolated postgres database.
+  version: 0.0.1
+servers:
+  - url: http://178.79.153.94:3002
+    description: Production server (uses live data)
+  - url: http://localhost:3002
+    description: Local server (uses test data)
+paths:
+  /accounts:
+    get:
+      summary: Find account
+      description: Get an account using query string params
+      parameters:
+      - in: query
+        name: email
+        schema:
+          type: string
+        description: Account email address
+      - in: query
+        name: refresh_token
+        schema:
+          type: string
+        description: Account refresh JWT token
+      responses:
+        '200':
+          $ref: "#/components/responses/Account"
+        '400':
+          description: Bad request. Please try again with different body/params.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: An account with the specified params was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create account
+      description: Creates new account in the database
+      requestBody:
+        $ref: '#/components/requestBodies/Account'
+      responses:
+        '200':
+          $ref: "#/components/responses/Account"
+        '400':
+          description: Bad request. Invalid account fields/values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /accounts/{id}:
+    parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        required: true
+        description: Account ID
+    get:
+      summary: Get account by ID
+      description: Get account model JSON object by ID
+      responses:
+        '200':
+          $ref: "#/components/responses/Account"
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: An account with the specified ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update account by ID
+      description: Update account by ID with provided values (if found)
+      responses:
+        '200':
+          $ref: "#/components/responses/Account"
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: An account with the specified ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete account by ID
+      description: Delete account by ID (if exists)
+      responses:
+        '200':
+          $ref: "#/components/responses/Account"
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: An account with the specified ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        password:
+          type: string
+        refresh_token:
+          type: string
+        reset_password_token:
+          type: string
+        password_confirmation_token:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        deleted_at:
+          type: string
+    AccountCreateBody:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        refresh_token:
+          type: string
+        password_confirmation_token:
+          type: string
+  requestBodies:
+    Account:
+      description: Optional description in *Markdown*
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AccountCreateBody'
+  responses:
+    Account:
+      description: Account model JSON object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Account'
