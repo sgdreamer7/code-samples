@@ -1,0 +1,127 @@
+<div *ngIf="!!(post$ | async)" class="post-page">
+  <div class="post-page__thumbnail">
+    <img [src]="post.thumbnail" alt="post.id">
+  </div>
+  <div class="post">
+    <div class="post-page__meta">
+      <div class="post-page__author">
+        {{ post.author }} | {{ post.created_at }}
+      </div>
+      <mat-chip-list class="post-page__categories">
+        <mat-chip color="primary" *ngFor="let category of post.categories" selected="true" disabled="true" (click)="redirectToCategory($event, category)">
+          {{ category.name }}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+    <div class="post-page__title">
+      <h2>{{ post.title }}</h2>
+    </div>
+    <div class="post-page__body">
+      {{ post.preview }}
+    </div>
+    <div class="post-page__pictures" *ngIf="(post$ | async).pictures">
+      <img *ngFor="let pic of post.pictures" [src]="pic.src" alt="pic.name">
+    </div>
+    <div class="post-page__body">
+      {{ post.body }}
+    </div>
+    <div class="post-page__socials">
+      (F) share (T) tweet (P) pin
+    </div>
+  </div>
+  <div class="post-page__comments">
+    <div>
+      <h2 *ngIf="!hasComments"
+        [translate]="'Blog.No Comments'">
+      </h2>
+
+      <h2 *ngIf="singleComment"
+          [translate]="'Blog.One Comment'"></h2>
+
+      <h2 *ngIf="hasComments"
+          [translate]="'Blog.Comments'"
+          [translateParams]="{value: post.comments.length}"></h2>
+    </div>
+
+    <div *ngIf="!(user$ | async)">
+      <a routerLink="/sign-in" 
+          class="login-link"
+          [translate]="'Blog.Sign in'">
+      </a>
+      <span [translate]="'Blog.to post'"></span>
+    </div> 
+
+    <div class="comment-list" *ngIf="hasComments">
+      <div class="comment-form" *ngIf="(user$ | async)?.id">
+        <div class="comment-list__item-author">
+          {{ (user$ | async).first_name }}
+        </div>
+        <div class="comment-list__item-info">
+          <textarea class="textarea"
+              placeholder="Write a comment"
+              [(ngModel)]="post['comment']"></textarea>
+          <div class="btn btn-filled green" 
+              (click)="addComment('comment', post, post['comment'])"
+              [translate]="'Blog.Submit'">
+          </div>
+        </div>
+      </div>
+      <div class="comment-list__item" *ngFor="let comment of post.comments">
+        <div class="comment-list__item-author">
+          {{ comment.author }}
+        </div>
+        <div class="comment-list__item-info">
+          <div class="comment-list__item-body">
+            <div>
+              {{ comment.body }}
+            </div>
+            <a (click)="showTextarea(comment)"
+              *ngIf="!comment.showTextarea && (user$ | async)"
+              class="reply-btn"
+              [translate]="'Blog.Reply'">
+            </a>
+            <div *ngIf="comment.showTextarea" 
+                class="reply-form">
+              <div class="comment-list__item-author">
+                {{ (user$ | async).first_name }}
+              </div>
+              <div class="comment-list__item-info" *ngIf="(user$ | async)?.id">
+                <textarea class="textarea"
+                    placeholder="Write a comment"
+                    [(ngModel)]="comment['comment']">
+                </textarea>
+                <div class="btn btn-filled green"
+                    (click)="addComment('reply', comment, comment['comment'])"
+                    [translate]="'Blog.Submit'">
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="comment-list__item-date">
+            {{ comment.created_at }}
+          </div>
+
+          <div class="replies">
+            <div class="replies-item" *ngFor="let reply of comment.replies">
+              <div class="comment-list__item-author">{{ reply.author }}</div>
+              <div class="comment-list__item-info">
+                <div class="comment-list__item-body">
+                  <div>{{ reply.body }}</div>
+                </div>
+                <div class="comment-list__item-date">
+                  {{ reply.created_at }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="(user$ | async)?.id">
+      leave a comment
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="reviews">
+  <div class="reviews__col">
+    <h3 [translate]="'Product.Review Breakdown'"></h3>
+    <div class="reviews__rating-list rating-list">
+      <div class="rating-list__item" *ngFor="let rating of ratings">
+        <span class="stars">
+          {{ rating.stars }}
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+        </span>
+        <span class="proggress">
+          <span class="proggress-bg"
+            [ngStyle]="{ width: countWidth(rating.count) }">
+          </span>
+        </span>
+        <span class="count">{{ rating.count }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="reviews__col">
+    <h3 [translate]="'Product.Average Ratings'"></h3>
+
+    <div class="reviews__average">
+      <div class="reviews__average-item"
+        *ngFor="let item of averageRatings">
+        <span class="reviews__average-title"
+            [translate]="'Product.' + item">
+        </span>
+        <span>
+          <mat-icon *ngFor="let star of [0,1,2,3,4]"
+              svgIcon="star"
+              [color]="setColor(star, average[item])">
+          </mat-icon>
+        </span>
+        <span>({{ average[item] }})</span>
+      </div>
+    </div>
+  </div>
+</div>

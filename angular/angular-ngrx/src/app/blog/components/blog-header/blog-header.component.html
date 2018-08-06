@@ -1,0 +1,41 @@
+<div class="blog__header">
+  <div class="blog__nav">
+    <div class="blog__nav-item">
+      <h2 [translate]="'Blog.Blog'"></h2>
+    </div>
+    <a [routerLink]="['categories','all']"
+        routerLinkActive="active"
+        class="blog__nav-item"
+        [translate]="'Blog.All'">
+    </a>
+    <a [routerLink]="['categories', 'buying']"
+        routerLinkActive="active"
+        class="blog__nav-item"
+        [translate]="'Blog.Buying'">
+    </a>
+
+    <a [routerLink]="['categories', 'community']"
+        routerLinkActive="active"
+        class="blog__nav-item"
+        [translate]="'Blog.Community'">
+    </a>
+
+    <a [routerLink]="['categories', 'meetup']"
+        routerLinkActive="active"
+        class="blog__nav-item"
+        [translate]="'Blog.Meetup'">
+    </a>
+
+    <a [routerLink]="['categories', 'selling']"
+        routerLinkActive="active"
+        class="blog__nav-item"
+        [translate]="'Blog.Selling'">
+    </a>
+  </div>
+  <div class="blog__search">
+    <mat-form-field>
+      <input matInput placeholder="Search the blog">
+      <mat-icon matSuffix svgIcon="search"></mat-icon>
+    </mat-form-field>
+  </div>
+</div>

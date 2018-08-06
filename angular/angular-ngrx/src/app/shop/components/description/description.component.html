@@ -1,0 +1,26 @@
+<div class="description">
+  <div class="description__main">
+    <h3 [translate]="'Product.Order List'"></h3>
+    <div class="description__text">
+      {{ description.orderList }}
+    </div>
+  </div>
+  <div>
+    <h3 [translate]="'Product.Features'"></h3>
+    <ul class="description__list">
+      <li class="description__list-item"
+          *ngFor="let item of description.features">
+        {{ item }}
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3 [translate]="'Product.Applications'"></h3>
+    <ul class="description__list">
+      <li class="description__list-item"
+          *ngFor="let item of description.applications">
+        {{ item }}
+      </li>
+    </ul>
+  </div>
+</div>

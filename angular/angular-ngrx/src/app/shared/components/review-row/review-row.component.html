@@ -1,0 +1,11 @@
+<div class="review-row">
+
+  <h2 class="review-row__title" [translate]="'Reviews.Recent reviews from happy people'"></h2>
+  
+  <div class="review-row__list" *ngIf="!!(reviews$ | async).length">
+    <div class="review-row__item" *ngFor="let review of (reviews$ | async); let i = index">
+      <review-item [review]="review"></review-item>
+    </div>
+  </div>
+
+</div>

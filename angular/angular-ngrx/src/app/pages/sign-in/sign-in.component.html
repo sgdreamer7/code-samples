@@ -1,0 +1,59 @@
+<div class="sign-in-page__container">
+  <div class="sign-in-page__form">
+    
+    <h2 class="sign-in-page__title" [translate]="'Auth.Sign In'"></h2>
+    
+    <div class="auth-form__container">
+      <form [formGroup]="signInForm" (ngSubmit)="signIn($event)" class="auth-form">
+        
+        <div *ngIf="signInForm['controls'].email.invalid && signInForm['controls'].email.touched"
+            class="auth-form__error"
+            [translate]="'Auth.Email is invalid'">
+        </div>
+        <mat-form-field class="form-group auth-form__input-wrap">
+          <input matInput 
+              placeholder="{{ 'Auth.Your Email' | translate }}"
+              type="email"
+              class="form-control auth-form__input"
+              formControlName="email">
+        </mat-form-field>
+
+        <div *ngIf="signInForm['controls'].password.invalid
+                  && signInForm['controls'].password.touched"
+            class="auth-form__error"
+            [translate]="'Auth.Must be at least 8 letters long'">
+        </div>
+        
+        <mat-form-field class="form-group auth-form__input-wrap">
+          <input matInput 
+              placeholder="{{ 'Auth.Your Password' | translate }}"
+              type="password"
+              class="form-control auth-form__input"
+              formControlName="password">
+        </mat-form-field>
+        
+        <div class="form-group auth-form__input-wrap auth-form__input-wrap_double">
+          <mat-checkbox  formControlName="remember_me"
+              class="form-control auth-form__input"
+              color="primary">
+              {{ 'Auth.Remember Me' | translate }}
+          </mat-checkbox>
+          
+          <div class="btn btn-inline" 
+            (click)="openDialog($event)"
+            [translate]="'Auth.Forgot your password?'">
+          </div>
+        </div>
+
+        <button type="submit"
+            role="submit" 
+            class="btn btn-filled green"
+            [disabled]="!signInForm.valid"
+            [translate]="'Auth.Sign In'">
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="sign-in-page__bg"></div>
+</div>

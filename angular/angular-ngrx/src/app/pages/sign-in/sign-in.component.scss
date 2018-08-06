@@ -1,0 +1,43 @@
+@import "styles/forms";
+
+.sign-in-page {
+
+  &__container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__form {
+    width: 450px;
+  }
+
+  &__title {
+    width: 100%;
+    margin-left: 5%;
+  }
+
+  &__bg {
+    width: 45%;
+    margin: 1vh 15% 1vh 0;
+    min-height: calc(100vh - 200px);
+    background: url('/assets/images/login.png') center no-repeat;
+    background-size: contain;
+  }
+
+  &__terms {
+    margin: 15px 0;
+    font-size: 11px;
+  }
+
+  &__socials {
+    margin: 20px 0;
+    font-weight: 600;
+  }
+
+  &__login {
+    a {
+      font-weight: 600;
+      text-decoration: underline;
+    }
+  }
+}

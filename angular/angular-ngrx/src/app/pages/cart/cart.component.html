@@ -1,0 +1,67 @@
+<div class="dialog__content">
+  <div class="cart">
+    <div class="cart__empty" *ngIf="false">
+      <img class="cart__empty-image" src="assets/images/Cart.png" alt="">
+
+      <p class="cart__empty-text centered">
+        Your cart is still empty, but do not be discouraged.
+      </p>
+      <p class="cart__empty-text centered">Return to
+        <a (click)="navigate('home')">home</a> to start shoppint</p>
+
+      <div class="centered">
+        <div class="btn btn-filled green" (click)="navigate('home')">Start shopping</div>
+      </div>
+    </div>
+    <div class="cart__full" *ngIf="true">
+      <div class="cart__shop-list">
+        <div class="cart__shop" *ngFor="let order of orders">
+          <div class="cart__shop-info shop">
+            <div class="shop__avatar" [ngStyle]="{'background-image': 'url('+ order.shop.thumbnail +')'}">
+            </div>
+            <div class="shop__name">
+              <h3>{{ order.shop.name }}</h3>
+            </div>
+          </div>
+          <div class="cart__items-list">
+            <div class="cart__item" *ngFor="let product of order?.products">
+              <div class="cart__item-thumbnail" [ngStyle]="{'background-image': 'url('+ product.thumbnail +')'}"></div>
+              <div class="cart__item-description">
+                <p> {{ product.name }}</p>
+                <div class="cart__item-price">
+                  ${{ product.price }}
+                </div>
+              </div>
+              <div class="cart__item-quantity">
+                <div class="decrease" (click)="changeQuantity(product, false)">-</div>
+                <input type="text" class="quantity" min="1" [value]="product['quantity']">
+                <div class="increase" (click)="changeQuantity(product, true)">+</div>
+              </div>
+              <div class="cart__item-total">
+                {{ product.price * product.quantity }}
+              </div>
+              <div class="cart__item-cancel">
+                <mat-icon svgIcon="close"></mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart__totals">
+        <div class="cart__totals-price">
+          <p class="total-text">Total:</p>
+          <p> {{ total }}</p>
+        </div>
+        <div class="cart__actions">
+          <div class="btn btn-outline">
+            Continue shopping
+          </div>
+          <div class="btn btn-filled green">
+            Checkout
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

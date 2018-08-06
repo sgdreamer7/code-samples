@@ -1,0 +1,19 @@
+<div class="mat-dialog-header">
+  <h2 mat-dialog-title>Delete profile</h2>
+  <mat-icon (click)="close()" svgIcon="close"></mat-icon>
+</div>
+<mat-dialog-content>
+  <p>After deleting the account, the history of your purchases will be lost: You can no longer monitor the status of your orders
+    and receive information from sellers through the portal. If you regularly buy goods and services through a portal, deleting
+    your account is not recommended.</p>
+
+  <form class="form" [formGroup]="form" novalidate>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Your password*" formControlName="password">
+      <mat-error *ngIf="passwordControl.invalid && passwordControl.touched">Must be at least 8 letters long</mat-error>
+    </mat-form-field> 
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button cdkFocusInitial [disabled]="!form.valid || submitted" (click)="deleteProfile()">Delete profile</button>
+</mat-dialog-actions>

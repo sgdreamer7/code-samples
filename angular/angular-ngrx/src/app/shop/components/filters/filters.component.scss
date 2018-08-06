@@ -1,0 +1,70 @@
+@import "styles/variables";
+@import "styles/buttons";
+
+.filters {
+  width: 320px;
+}
+
+.reset {
+  height: 48px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: $cyan;
+
+  mat-icon {
+    margin-right: 5px;
+    height: 15px;
+    width: 15px;
+    color: $cyan;
+    font-size: 15px;
+  }
+}
+
+mat-expansion-panel {
+  box-shadow: none !important;
+  border-bottom: 1px solid $gray-text;
+
+  &:first-of-type {
+    border-top: 1px solid $gray-text;
+  }
+}
+
+.panel-body {
+  padding: 0 24px;
+}
+
+.checkbox-list {
+  display: flex;
+  flex-direction: column;
+
+  mat-checkbox {
+    margin-top: 5px;
+  }
+}
+
+.input-sm {
+  width: 70px;
+  padding: 5px;
+  border-radius: 2px;
+  border: 1px solid $gray-text;
+  background: $white;
+}
+
+.inputs-wrap {
+  margin-top: 10px;
+  display: flex;
+
+  * {
+    margin-right: 10px;
+  }
+}
+
+.horizontal-divide {
+  display: inline-block;
+  height: 1px;
+  border-bottom: 1px solid $gray-text;
+  width: 15px;
+  margin-top: 15px;
+}

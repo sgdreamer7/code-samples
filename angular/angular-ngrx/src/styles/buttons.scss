@@ -1,0 +1,140 @@
+@import "styles/variables.scss";
+
+button {
+  -webkit-appearance: none;
+  border: none;
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0 24px;
+  line-height: 46px;
+  text-align: center;
+  transition: .2s linear all;
+  outline: none !important;
+
+  &:disabled {
+    background: $gray-bg !important;
+    color: $gray-text !important;
+    border: 1px solid $gray-text;
+  }
+  // buttons with rounded border and no background
+  &-rounded {
+    border: 1px solid $gray-text;
+    color: $gray-text;
+    border-radius: $btn-border-radius;
+    transition: .2s ease-in background,
+                .2s ease-in color;
+
+    &:hover {
+      color: $white;
+      background: $gray-text;
+    }
+
+    &.cyan {
+      color: $cyan;
+      border-color: $cyan;
+
+      &:hover {
+        color: $white;
+        background: $cyan;
+      }
+    }
+
+    &.green {
+      color: $green;
+      border-color: $green;
+
+      &:hover {
+        color: $gray-text;
+        background: $green;
+      }
+    }
+  }
+
+  // inline buttons (nav links, etc)
+  &-inline {
+    transition: .1s linear color;
+    &:hover {
+      color: $gray-text;
+    }
+  }
+
+  // buttons with rounded border and background
+  &-filled {
+    width: 160px;
+    border-radius: $btn-border-radius;
+
+    &.green {
+      color: $white;
+      background: $green;
+    }
+
+    &.gray {
+      color: $black;
+      background: $gray-bg;
+    }
+  }
+
+  // iconed buttons
+  &-icon {
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid $gray-text;
+    border-radius: 50%;
+
+    svg {
+      display: flex;
+      width: 21px;
+      path {
+        fill: $gray-text;
+      }
+    }
+
+    &:hover {
+      background: $gray-text;
+
+      path{
+        fill: $white;
+      }
+    }
+
+    &.green {
+      border-color: $green;
+      color: $green;
+
+
+      path {
+        fill: $green;
+      }
+
+      &:hover {
+        background: $green;
+
+        path {
+          fill: $white;
+        }
+      }
+    }
+  }
+
+  &-outline {
+    width: auto;
+    height: auto;
+    padding: 4px 8px;
+    border: 1px solid $cyan;
+    border-radius: 2px;
+    color: $cyan;
+    background: $white;
+
+    &:hover {
+      background: $cyan;
+      color: $white;
+    }
+  }
+}

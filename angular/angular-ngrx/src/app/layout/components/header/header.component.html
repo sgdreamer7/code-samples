@@ -1,0 +1,65 @@
+<header class="header">
+  <div class="header__container">
+    <div class="header__logo" [routerLink]="['home']"></div>
+    <div class="header__menu menu">
+      <div class="menu__item menu__item_active"
+          routerLinkActive="active"
+          [routerLink]="['shop']"
+          [translate]="'Menu.Shop'"></div>
+      <div class="menu__item"
+          [translate]="'Menu.Workflow'"
+          [routerLink]="['workflow']"></div>
+      <div class="menu__item"
+          [translate]="'Menu.About'"
+          [routerLink]="['about']"></div>
+      <div class="menu__item"
+          [translate]="'Menu.Blog'"
+          [routerLink]="['blog']"></div>
+    </div> 
+    <div class="header__search">
+      <mat-form-field>
+        <input matInput type="search" placeholder="Search">
+      </mat-form-field>
+    </div>
+    <div class="header__auth" *ngIf="!(user$ | async)">
+      <div [routerLink]="['sign-in']" class="btn btn-inline" [translate]="'Auth.Sign In'"></div>
+      <div [routerLink]="['join']" class="btn btn-rounded cyan" [translate]="'Auth.Join'"></div>
+    </div>
+    <div class="header__auth header__auth_logged" *ngIf="!!(user$ | async)">
+      <div [matMenuTriggerFor]="menu" class="header__user">
+        <div class="header__user-avatar">
+          <img [src]="(user$ | async)?.avatar_url" alt="user_avatar">
+        </div>
+        <div class="header__user-dropdown">
+          <mat-icon>expand_more</mat-icon>
+        </div>
+      </div>
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item [routerLink]="['profile']">{{ 'PROFILE.PROFILE' | translate }}</a>
+        <button mat-menu-item (click)="logout()">{{ 'Menu.Logout' | translate }}</button>
+      </mat-menu>
+    </div>
+    <div class="header__divider"></div>
+    <div class="header__actions">
+      <div class="cart">
+        <a [routerLink]="['cart']">
+          <mat-icon svgIcon="cart"></mat-icon>
+        </a>
+      </div>
+      <div class="wish-list">
+        <a [routerLink]="['wishlist']">
+          <mat-icon svgIcon="heart"></mat-icon>
+        </a>
+      </div>
+      <div class="language" *ngIf="!!(languages$ | async).length && !!(currentLang$ | async)">
+        <mat-select [value]="(currentLang$ | async).value" name="lang">
+          <mat-option *ngFor="let lang of (languages$ | async)" 
+            [value]="lang?.value"
+            (click)="switchLanguage(lang)">
+            {{ lang?.name }}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+  </div>
+</header>

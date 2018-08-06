@@ -6,6 +6,8 @@
 
 ### Angular
 
+- [NGRX example](./angular/angular-ngrx)
+
 ### Python
 
 ### NodeJS

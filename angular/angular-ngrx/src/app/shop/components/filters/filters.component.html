@@ -1,0 +1,123 @@
+<div class="filters">
+  <div class="reset">
+    <mat-icon svgIcon="close"></mat-icon> 
+    <span [translate]="'Shop.Reset filters'"></span> 
+  </div>
+  <mat-accordion multi="true" displayMode="flat">
+    <mat-expansion-panel [expanded]="step1"
+        hideToggle="true"
+        (opened)="toggleStep(0)"
+        (closed)="toggleStep(0)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>{{ step1 ? 'expand_less' : 'expand_more' }}</mat-icon>
+          <span [translate]="'Shop.Categories'"></span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="panel-body">Categories list</div>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step2"
+        hideToggle="true"
+        (opened)="toggleStep(1)"
+        (closed)="toggleStep(1)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>{{ step2 ? 'expand_less' : 'expand_more' }}</mat-icon>
+          <span [translate]="'Shop.Price, $'"></span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="panel-body">
+        <div class="checkbox-list checkbox-list_price">
+          <mat-checkbox color="primary">
+            <span [translate]="'Shop.less than 100'"></span>
+          </mat-checkbox>
+          <mat-checkbox color="primary">100 - 500</mat-checkbox>
+          <mat-checkbox color="primary">500 - 1000</mat-checkbox>
+          <mat-checkbox color="primary">1000 - 2000</mat-checkbox>
+          <mat-checkbox color="primary">
+            <span [translate]="'Shop.more than 2000'"></span>
+          </mat-checkbox>
+          <div class="inputs-wrap">
+            <input type="text" placeholder="{{ 'Shop.from' | translate}}" class="input-sm">
+            <span class="horizontal-divide"></span>
+            <input type="text" placeholder="{{ 'Shop.to' | translate}}" class="input-sm">
+            <div class="btn btn-outline">OK</div>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step3"
+        hideToggle="true"
+        (opened)="toggleStep(2)"
+        (closed)="toggleStep(2)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>{{ step3 ? 'expand_less' : 'expand_more' }}</mat-icon>
+          <span [translate]="'Shop.Shipping rates'"></span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="panel-body">
+        <div>
+          <mat-icon color="primary" svgIcon="star"></mat-icon>
+          <mat-icon svgIcon="star"></mat-icon>
+          <mat-icon svgIcon="star"></mat-icon>
+          <mat-icon svgIcon="star"></mat-icon>
+          <mat-icon svgIcon="star"></mat-icon>
+        </div>
+        <div>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+          <mat-icon svgIcon="star"></mat-icon>
+          <mat-icon svgIcon="star"></mat-icon>
+          <mat-icon svgIcon="star"></mat-icon>
+        </div>
+        <div>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+          <mat-icon svgIcon="star"></mat-icon>
+          <mat-icon svgIcon="star"></mat-icon>
+        </div>
+        <div>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+          <mat-icon svgIcon="star"></mat-icon>
+        </div>
+        <div>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+          <mat-icon svgIcon="star" color="primary"></mat-icon>
+        </div>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step4"
+        hideToggle="true"
+        (opened)="toggleStep(3)"
+        (closed)="toggleStep(3)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>{{ step4 ? 'expand_less' : 'expand_more' }}</mat-icon>
+          <span [translate]="'Shop.Filter'"></span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="panel-body">
+        <div class="checkbox-list">
+          <mat-checkbox color="primary">
+            <span [translate]="'Shop.less than 100'"></span>
+          </mat-checkbox>
+          <mat-checkbox color="primary">100 - 500</mat-checkbox>
+          <mat-checkbox color="primary">500 - 1000</mat-checkbox>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

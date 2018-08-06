@@ -1,0 +1,85 @@
+@import '~@angular/material/theming';
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$test-accent: (
+    50 : #f6fcef,
+    100 : #e7f8d7,
+    200 : #d8f4bc,
+    300 : #c8efa1,
+    400 : #bceb8c,
+    500 : #b0e878,
+    600 : #a9e570,
+    700 : #a0e265,
+    800 : #97de5b,
+    900 : #87d848,
+    A100 : #ffffff,
+    A200 : #fefffc,
+    A400 : #e0ffc9,
+    A700 : #d1ffb0,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$test-primary: (
+    50 : #eaf8f9,
+    100 : #caedf1,
+    200 : #a7e1e8,
+    300 : #83d4df,
+    400 : #69cbd8,
+    500 : #4ec2d1,
+    600 : #47bccc,
+    700 : #3db4c6,
+    800 : #35acc0,
+    900 : #259fb5,
+    A100 : #f1fdff,
+    A200 : #bef5ff,
+    A400 : #8becff,
+    A700 : #72e8ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$primary: mat-palette($test-primary, 500, 200);
+$accent:  mat-palette($test-accent, 500, 200);
+// The warn palette is optional (defaults to red).
+$warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$test-theme: mat-light-theme($primary, $accent, $warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($test-theme);

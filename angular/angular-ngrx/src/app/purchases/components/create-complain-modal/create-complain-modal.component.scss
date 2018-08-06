@@ -1,0 +1,22 @@
+.complain__confirm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.complain__confirm-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 140px;
+    background: url('/assets/images/complaint.svg') center no-repeat;
+    background-size: contain;
+}
+mat-form-field {
+    display: block;
+}
+mat-dialog-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

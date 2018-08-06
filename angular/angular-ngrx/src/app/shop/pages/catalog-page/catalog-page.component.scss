@@ -1,0 +1,130 @@
+@import "styles/variables";
+
+.catalog-page {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.products {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  margin-right: 34px;
+}
+
+.main-content {
+  width: 100%;
+  margin-left: 34px;
+
+  &__header {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    color: $gray-text;
+  }
+
+  &__tool-bar {
+    min-width: 350px;
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    .disabled {
+      color: $gray-text;
+      cursor: pointer;
+    }
+
+    .active {
+      color: $cyan;
+      cursor: pointer;
+    }
+  }
+
+  .sorting {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: $gray-text;
+
+    &__trigger {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-left: 10px;
+    }
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    grid-item {
+      width: 33.3%
+    }
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.pagination {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  &__showmore {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    .btn {
+      min-width: 180px;
+      margin: 20px auto;
+    }
+  }
+
+  &__items {
+    width: 25%;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+
+    &_current {
+      color: $cyan;
+    }
+
+    mat-icon {
+      margin: 0 5px;
+      width: 25px;
+      height: 25px;
+      border: 1px solid $black;
+      border-radius: 50%;
+    }
+
+    &_disabled {
+      color: $gray-text;
+
+      mat-icon {
+        border-color: $gray-text;
+        color: $gray-text;
+      }
+    }
+  }
+} 

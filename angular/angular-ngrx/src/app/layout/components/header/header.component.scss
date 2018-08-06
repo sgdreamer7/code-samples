@@ -1,0 +1,89 @@
+@import "styles/variables.scss";
+
+.header {
+  background: $white;
+  border-bottom: 1px solid $cyan;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: auto;
+    height: 200px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    display: block;
+    cursor: pointer;
+    outline: none;
+    height: 100px;
+    width: 100px;
+  }
+
+  &__menu.menu {
+    display: flex;
+    width: 30%;
+    justify-content: space-evenly;
+  }
+  .menu {
+    &__item {
+      cursor: pointer;
+      transition: .1s linear color;
+
+      &:hover {
+        color: $gray-text;
+      }
+
+      &_active {
+
+      }
+    }
+  }
+
+  &__divider {
+    margin: 0px;
+    height: 46px;
+    border-left: 1px solid $gray-text;
+  }
+
+  &__auth {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  &__actions {
+    width: 12%;
+    display: flex;
+    justify-content: space-evenly;
+
+    .language {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    
+    &-avatar {
+      margin-right: 5px; 
+      img {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .cart, .wish-list {
+    margin: 0 5px;
+  }
+}

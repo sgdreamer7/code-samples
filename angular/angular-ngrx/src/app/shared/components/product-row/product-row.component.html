@@ -1,0 +1,8 @@
+<div class="product-row">
+  <h2 class="product-row__title">{{ title }}</h2>
+  <div class="product-row__list" *ngIf="!!(products$ | async).length">
+    <div class="product-row__item" *ngFor="let product of (products$ | async)">
+      <product-item [product]="product"></product-item>
+    </div>
+  </div>
+</div>

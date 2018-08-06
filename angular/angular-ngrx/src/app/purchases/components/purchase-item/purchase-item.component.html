@@ -1,0 +1,45 @@
+<div class="purchase-item__row">
+  <div class="purchase-item__col">
+    {{ purchase.number }}
+  </div>
+  <div class="purchase-item__col">
+    {{ purchase.created_date | date:'short' }}
+  </div>
+  <div class="purchase-item__col">
+    <a class="purchase-item__info" 
+    [routerLink]="[ purchase.id ]">
+      <div class="purchase-item__img">
+        <img [src]="purchase.item.thumbnail" alt="">
+      </div>
+      <div class="purchase-item__title">{{ purchase.item.name }}</div>
+    </a>
+  </div>
+  <div class="purchase-item__col">
+    {{ purchase.item.qty }}
+  </div>
+  <div class="purchase-item__col">
+    NiceRF
+  </div>
+  <div class="purchase-item__col">
+    {{ purchase.status }}
+  </div>
+  <div class="purchase-item__col">
+    $ {{ purchase.total }}
+  </div>
+  <div class="purchase-item__col">
+    <button mat-icon-button [matMenuTriggerFor]="purchaseMenu">
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+    <mat-menu #purchaseMenu="matMenu">
+      <button mat-menu-item (click)="showComplainCreateModal(purchase)">
+        <span>Complain</span>
+      </button>
+      <button mat-menu-item>
+        <span>Contact the seller</span>
+      </button>
+      <button mat-menu-item>
+        <span>Give feedback</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>

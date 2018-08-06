@@ -1,0 +1,39 @@
+@import "styles/variables";
+
+.container {
+    width: auto;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.profile-aside {
+    width: 20%;
+    margin-right: 10px;
+}
+.profile-toolbar {
+    background: transparent;
+    &__item {
+        border-radius: 4px;
+        border-left: 2px solid transparent;
+        outline: none;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+        &.active,
+        &:hover {
+            background: lighten($transparent-cyan, 30%);
+            border-left: 2px solid $cyan;
+            color: $cyan;
+            font-weight: 600;
+        }
+    }
+    &__icon {
+        margin-right: 10px;
+    }
+}
+.profile-main {
+    flex-grow: 1;
+}

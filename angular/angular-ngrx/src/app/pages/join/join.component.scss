@@ -1,0 +1,28 @@
+@import "styles/forms";
+
+.join-page {
+
+  &__container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__form {
+    width: 450px;
+  }
+
+  &__title {
+    width: 100%;
+    margin-left: 5%;
+  }
+
+  &__bg {
+    width: 50%;
+    margin: 5vh 5vw 5vh 0;
+    background: url('/assets/images/sign-up.png') center no-repeat;
+    background-size: contain;
+  }
+
+}
+
+

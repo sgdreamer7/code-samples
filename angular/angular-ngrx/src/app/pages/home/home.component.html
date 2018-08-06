@@ -1,0 +1,130 @@
+<section class="banner">
+  <div class="banner__content">
+    <h1 class="banner__title" [translate]="'Banner.Buy awesome things'"></h1>
+    <p class="banner__text" [translate]="'Banner.The monkey-rope'"></p>
+    <div class="banner__actions">
+      <div class="btn btn-filled green" [translate]="'Banner.Create a store'">
+      </div>
+      <div class="btn btn-filled gray" [translate]="'Banner.Buy product'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="new-products">
+  <product-row [type]="'new'"></product-row>
+</section>
+
+<section class="popular-products">
+  <product-row [type]="'popular'"></product-row>
+</section>
+
+<section class="reviews">
+  <review-row></review-row>
+</section>
+
+<section class="features">
+  <h2 class="features__title features__title_main" [translate]="'Features.Do more with us'"></h2>
+  <div class="features__list">
+    <div class="features__item">
+      <div class="features__image">
+        <img src="assets/images/1.png" alt="">
+      </div>
+      <div class="features__title" [translate]="'Features.Craft & Sell'"></div>
+      <div class="features__text" [translate]="'Features.Create your own e-commerce'"></div>
+      <div class="features__action">
+        <div class="btn btn-filled green" [translate]="'Features.Create a store'"></div>
+      </div>
+    </div>
+    <div class="features__item">
+      <div class="features__image">
+        <img src="assets/images/2.png" alt="">
+      </div>
+      <div class="features__title"  [translate]="'Features.Buy'"></div>
+      <div class="features__text"  [translate]="'Features.Create your own e-commerce'">
+      </div>
+      <div class="features__action">
+        <div class="btn btn-filled green"  [translate]="'Features.Buy product'"></div>
+      </div>
+    </div>
+    <div class="features__item">
+      <div class="features__image">
+        <img src="assets/images/3.png" alt="">
+      </div>
+      <div class="features__title"  [translate]="'Features.Killer feature'"></div>
+      <div class="features__text"  [translate]="'Features.Create your own e-commerce'">
+      </div>
+      <div class="features__action">
+        <div class="btn btn-filled green"  [translate]="'Do it'"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pros">
+  <div class="pros__list">
+    <div class="pros__item" *ngFor="let item of [1,2,3]">
+      <div class="pros__icon">
+        <mat-icon [color]="'primary'">shopping_basket</mat-icon>
+      </div>
+      <div class="pros__title"  [translate]="'Pros.You can buy all'"></div>
+      <div class="pros__text"  [translate]="'Pros.A wonderful serenity has taken possesion'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="post">
+  <div class="post__grid">
+    <div class="post__col">
+      <div class="post__item lg">
+        <div class="post__title"  [translate]="'MainPosts.4 reasons'">
+        </div>
+        <div class="post__description"  [translate]="'MainPosts.Attention all Maximo'">
+        </div>
+        <div class="post__link"  [translate]="'MainPosts.Read'">
+          <div class="btn btn-icon">
+            <mat-icon>chevron_right</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="post__col">
+      <div class="post__item md">
+        <div class="post__title"  [translate]="'MainPosts.What if your brand'">
+        </div>
+        <div class="post__description"  [translate]="'MainPosts.At IBM, we'">
+        </div>
+        <div class="post__link"  [translate]="'MainPosts.Read'">
+          <div class="btn btn-icon">
+            <mat-icon>chevron_right</mat-icon>
+          </div>
+        </div>
+      </div>
+      <div class="post__row">
+        <div class="post__item bg-cyan">
+          <div class="post__title"  [translate]="'MainPosts.What if your brand'">
+          </div>
+          <div class="post__description"  [translate]="'MainPosts.At IBM, we'">
+          </div>
+          <div class="post__link"  [translate]="'MainPosts.Read'">
+            <div class="btn btn-icon">
+              <mat-icon>chevron_right</mat-icon>
+            </div>
+          </div>
+        </div>
+        <div class="post__item bg-green">
+          <div class="post__title"  [translate]="'MainPosts.What if your brand'">
+          </div>
+          <div class="post__description" [translate]="'MainPosts.At IBM, we'">
+          </div>
+          <div class="post__link" [translate]="'MainPosts.Read'">
+            <div class="btn btn-icon">
+              <mat-icon>chevron_right</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

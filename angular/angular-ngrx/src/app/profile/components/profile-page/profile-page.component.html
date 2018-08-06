@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="profile">
+    <aside class="profile-aside">
+
+      <mat-toolbar class="profile-toolbar">
+        <mat-toolbar-row class="profile-toolbar__item" routerLink="/profile/info" routerLinkActive="active">
+          <mat-icon class="profile-toolbar__icon" svgIcon="default-profile"></mat-icon>
+          <span>Profile</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="profile-toolbar__item" routerLink="/profile/purchases" routerLinkActive="active">
+          <mat-icon class="profile-toolbar__icon" svgIcon="cart"></mat-icon>
+          <span>Purchases</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="profile-toolbar__item" >
+          <mat-icon class="profile-toolbar__icon" svgIcon="store"></mat-icon>
+          <span>My store</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="profile-toolbar__item">
+          <mat-icon class="profile-toolbar__icon" svgIcon="inbox"></mat-icon>
+          <span>Messages</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+
+      <button mat-button>Log out</button>
+    </aside>
+    <div class="profile-main">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

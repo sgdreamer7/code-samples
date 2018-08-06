@@ -1,0 +1,100 @@
+<div class="container">
+  <!-- // TODO: Implement breadcrums component -->
+  <div class="breadcrumbs" style="margin-bottom: 50px;">
+    <span>Main</span>
+    <span>DIY Electronics</span>
+    <span>DIY Electronics</span>
+  </div>
+  <!-- // TODO: Implement breadcrumbs component -->
+
+
+  <div class="product-page">
+    <div class="product-page__content">
+      <div class="product-data">
+        <div class="product-gallery">
+          <product-preview [thumbnails]="thumbnails"></product-preview>
+        </div>
+        <div class="product-info">
+          <h1 class="product-info__title">2PCS 1W ALL-In-One Walkie Talkie Module SA828</h1>
+          <div class="product-info__rating">
+            <span class="product-info__rating-stars">
+              <mat-icon *ngFor="let item of [1,2,3,4,5]">star_rate</mat-icon>
+            </span>
+            <span>214 reviews</span>
+          </div>
+          <div class="product-info__price">
+            $299
+          </div>
+          <div class="product-info__quantity">
+            <div>Quantity</div>
+            <!-- // TODO: Implement quantity input component -->
+            <mat-button-toggle-group>
+              <mat-button-toggle>
+                -
+              </mat-button-toggle>
+              <mat-form-field>
+                <input matInput type="number">
+              </mat-form-field>
+              <mat-button-toggle>
+                +
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+
+          </div>
+          <div class="product-info__btns">
+            <button type="button" mat-raised-button color="accent">Add to cart</button>
+            <button mat-button>
+              <mat-icon>favorite_border</mat-icon> Add to wishlist
+            </button>
+            <button mat-button>
+              <mat-icon>favorite</mat-icon> Remove from wishlist
+            </button>
+          </div>
+
+          <div class="product-info__social">
+            <button mat-button class="product-info__social-btn">Share</button>
+            <button mat-button class="product-info__social-btn">Tweet</button>
+            <button mat-button class="product-info__social-btn">Pin</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product__tabs">
+        <nav mat-tab-nav-bar>
+          <a mat-tab-link
+            [routerLink]="['description']"
+            routerLinkActive #description="routerLinkActive"
+            [active]="description.isActive">
+            Description
+          </a>
+          <a mat-tab-link
+            [routerLink]="['shipping']"
+            routerLinkActive #shipping="routerLinkActive"
+            [active]="shipping.isActive">
+            Shipping info
+          </a>
+          <a mat-tab-link
+            [routerLink]="['specs']"
+            routerLinkActive #specs="routerLinkActive"
+            [active]="specs.isActive">
+            Specs and docs
+          </a>
+          <a mat-tab-link
+            [routerLink]="['reviews']"
+            routerLinkActive #reviews="routerLinkActive"
+            [active]="reviews.isActive">
+            Reviews
+          </a>
+        </nav>
+      </div>
+
+      <div class="product__content">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+    <aside class="product-page__seller">
+      <h1>Nice rf Shenzhen</h1>
+    </aside>
+  </div>
+</div>

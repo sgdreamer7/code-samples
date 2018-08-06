@@ -1,0 +1,130 @@
+<mat-spinner *ngIf="!orderLoaded"></mat-spinner>
+
+<div class="order-page" *ngIf="orderLoaded && order">
+  <section class="order-page__order">
+    <div class="order-header">
+      <div class="order-header__title">
+        <button mat-icon-button (click)="back()" *ngIf="showBackButton">
+          <mat-icon aria-label="Back">keyboard_backspace</mat-icon>
+        </button>
+        <h1>Order № {{ order.number }}</h1>
+      </div>
+      <button mat-stroked-button color="primary">Give feedback</button>
+    </div>
+
+    <div class="no-auth-block" *ngIf="noAuthBlockVisible">
+      <div>
+        Please
+        <a [routerLink]="['/sign-in']" [translate]="'Blog.Sign in'">sign in</a>
+        or
+        <a [routerLink]="['/join']" [translate]="'Auth.Join'">join</a>
+        to give feedback
+      </div>
+      <button mat-icon-button (click)="hideNoAuthBlock()">
+        <mat-icon aria-label="" svgIcon="close"></mat-icon>
+      </button>
+    </div>
+
+    <div class="order-body">
+      <p>
+        <span class="gray-text">Created: </span> {{ order.created_date | date:'MM.dd.yy, hh:mm' }}
+      </p>
+      <p>
+        <span class="gray-text">Status: </span> {{ order.status }}
+      </p>
+      <div class="order-preview">
+        <div class="order-preview__img">
+          <img [src]="order.item.thumbnail" [alt]="order.item.name">
+        </div>
+        <div class="order-preview__info">
+          <p>{{ order.item.name }}</p>
+          <p>
+            <span class="gray-text">Quantity:</span> {{ order.item.qty }}</p>
+          <p>
+            <span class="gray-text">Price: </span> $ {{ order.item.price }}</p>
+        </div>
+      </div>
+
+      <div class="order-history">
+        <h4>Order history</h4>
+        <div class="history-list">
+          <div class="history-item">
+            <div class="history-item__title">May 8, 2018</div>
+            <div class="history-item__body">
+              <span class="history-item__time">22:30</span>
+              <div>New order</div>
+            </div>
+            <div class="history-item__body">
+              <span class="history-item__time">23:11</span>
+              <div>The transfer to the carrier is planned</div>
+            </div>
+          </div>
+          <div class="history-item">
+            <div class="history-item__title">May 8, 2018</div>
+            <div class="history-item__body">
+              <span class="history-item__time">22:30</span>
+              <div>Transferred to the delivery service</div>
+            </div>
+          </div>
+          <div class="history-item">
+            <div class="history-item__title">May 9, 2018</div>
+            <div class="history-item__body">
+              <span class="history-item__time">22:30</span>
+              <div>New order</div>
+            </div>
+          </div>
+          <div class="history-item">
+            <div class="history-item__title">May 10, 2018</div>
+            <div class="history-item__body">
+              <span class="history-item__time">22:30</span>
+              <div>Waiting for the customer at the point of self-delivery</div>
+            </div>
+            <div class="history-item__body">
+              <span class="history-item__time">22:30</span>
+              <div>Completed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="order-page__aside">
+
+    <p class="aside-title">Seller</p>
+
+    <div class="user-info">
+      <div class="user-info__img">
+        <img src="https://conferencecloud-assets.s3.amazonaws.com/default_avatar.png" alt="">
+      </div>
+      <div class="user-info__name">NiceRF</div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <p class="aside-title">Amount</p>
+
+    <div class="aside-amount">
+      <span>1 item</span>
+      <span>$299</span>
+    </div>
+    <div class="aside-amount">
+      <span>Delivery</span>
+      <span>$2</span>
+    </div>
+    <div class="aside-amount">
+      <span>Total</span>
+      <span>$301</span>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <p class="aside-title">Delivery</p>
+    <p>Pickup from Nova Poshta</p>
+
+    <mat-divider></mat-divider>
+
+    <p class="aside-title">Payment method</p>
+    <p>MasterCard</p>
+
+  </section>
+</div>

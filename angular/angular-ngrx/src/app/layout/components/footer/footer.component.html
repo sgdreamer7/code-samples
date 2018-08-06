@@ -1,0 +1,47 @@
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__list">
+      <h3 class="footer__list-title" [translate]="'Footer.Help'"></h3>
+      <ul>
+        <li class="footer__list-item" [translate]="'Footer.FAQ'"></li>
+        <li class="footer__list-item" [translate]="'Footer.How it works'"></li>
+        <li class="footer__list-item" [translate]="'Footer.Terms of service'"></li>
+      </ul>
+    </div>
+    <div class="footer__list">
+      <h3 class="footer__list-title" [translate]="'Footer.Policy'"></h3>
+      <ul>
+        <li class="footer__list-item" [translate]="'Footer.API'"></li>
+        <li class="footer__list-item" [translate]="'Footer.Badges'"></li>
+        <li class="footer__list-item" [translate]="'Footer.Our guarantee'"></li>
+      </ul>
+    </div>
+    <div class="footer__list">
+      <h3 class="footer__list-title" [translate]="'Footer.Company'"></h3>
+      <ul>
+        <li class="footer__list-item" [translate]="'Footer.Blog'"></li>
+        <li class="footer__list-item" [translate]="'Footer.About us'"></li>
+        <li class="footer__list-item" [translate]="'Footer.Contact'"></li>
+      </ul>
+    </div>
+    <div class="footer__contacts">
+      <h3  [translate]="'Footer.Stay Tuned'"></h3>
+      <div class="subscription">
+        <mat-form-field>
+          <input matInput placeholder="{{ 'Footer.Enter email' | translate }}" type="email" value="">
+        </mat-form-field>
+        <div class="btn btn-filled green" [translate]="'Footer.Subscribe'">
+        </div>
+      </div>
+      <div class="social">
+        <div class="icon icon-fb"></div>
+        <div class="icon icon-yt"></div>
+        <div class="icon icon-ig"></div>
+        <div class="icon icon-pt"></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__copyright">
+    &#169; 2018 Angular + NgRX example
+  </div>
+</footer>

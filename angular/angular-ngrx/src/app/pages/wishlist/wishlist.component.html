@@ -1,0 +1,114 @@
+<div class="wishlist">
+
+  <div class="main-content__header">
+    <h2 [translate]="'Wishlist.Wishlist'"></h2>
+    <div class="main-content__tool-bar">
+      <mat-icon 
+          (click)="setCurrentMode('grid')"
+          class="disabled"
+          [class.active]="currentMode === 'grid'">
+        grid_on
+      </mat-icon>
+      <mat-icon
+          (click)="setCurrentMode('list')"
+          class="disabled"
+          [class.active]="currentMode === 'list'">
+        list
+      </mat-icon>
+      <div class="sorting">
+        <span [translate]="'Shop.sort by'"></span>
+        <mat-menu #appMenu="matMenu"
+            yPosition="below"
+            [overlapTrigger]="false">
+          <button mat-menu-item>
+            <span [translate]="'Shop.Price from low'"></span>
+          </button>
+          <button mat-menu-item>
+            <span [translate]="'Shop.Price from high'"></span>
+          </button>
+          <button mat-menu-item>
+            <span [translate]="'Shop.Rating from low'"></span>
+          </button>
+          <button mat-menu-item>
+            <span [translate]="'Shop.Rating from high'"></span>
+          </button>
+        </mat-menu>
+
+        <div class="sorting__trigger" [matMenuTriggerFor]="appMenu">
+          <span [translate]="'Shop.Price from low'"></span>
+          <mat-icon>expand_more</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div *ngIf="!(loaded$ | async)" class="loader">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="(loaded$ | async)">
+
+    <div *ngIf="!(user$ | async)"
+        class="wishlist__panel">
+        <div>
+          <span [translate]="'Wishlist.Not Authorized'"></span>
+          <a [routerLink]="['join']"
+            class="in-text-link"
+            [translate]="'Wishlist.sign up'">
+          </a>
+          <span [translate]="'Wishlist.or'"></span>
+          <a [routerLink]="['sign-in']"
+            class="in-text-link"
+            [translate]="'Wishlist.sign in'">
+          </a>
+        </div>
+        <div class="wishlist__panel-close">
+          <mat-icon svgIcon="close"></mat-icon>
+        </div>
+    </div>
+
+    <div class="wishlist__content wishlist__content_empty"
+          *ngIf="(products$ | async)?.length === 0">
+        <div class="wishlist__banner"></div>
+        <div class="wishlist__actions">
+          <div>
+            <span [translate]="'Wishlist.Empty'"></span>
+          </div>
+          <div>
+            <span [translate]="'Wishlist.Return'"></span>
+            <a class="in-text-link"
+                [routerLink]="['home']"
+                [translate]="'Wishlist.Home'"></a>
+            <span [translate]="'Wishlist.to start'"></span>
+          </div>
+
+          <div class="btn btn-filled green"
+              [routerLink]="['home']"
+              [translate]="'Wishlist.Start shopping'">
+          </div>
+        </div>
+    </div>
+
+    <div class="wishlist__content"
+          *ngIf="(products$ | async)?.length > 0">
+
+      <div class="grid-mode grid"
+          *ngIf="currentMode === 'grid'">
+          <grid-item *ngFor="let product of (products$ | async)" [product]="product"></grid-item>
+      </div>
+
+      <div class="list-mode list"
+          *ngIf="currentMode === 'list'">
+          <list-item *ngFor="let product of (products$ | async)" [product]="product"></list-item>
+      </div>
+
+      <div class="wishlist__suggestions">
+        <h2 [translate]="'Wishlist.We thought'"></h2>
+        <div class="grid-mode grid">
+          <grid-item *ngFor="let product of (suggestions$ | async)" [product]="product"></grid-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

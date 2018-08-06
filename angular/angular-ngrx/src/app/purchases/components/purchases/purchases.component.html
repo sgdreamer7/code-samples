@@ -1,0 +1,66 @@
+<div class="purchases__header">
+  <h2>Purchases</h2>
+
+  <mat-form-field>
+    <input matInput type="search" placeholder="Search by order number" [(ngModel)]="searchOpts.value">
+    <mat-icon matSuffix svgIcon="search"></mat-icon>
+  </mat-form-field>
+</div>
+<div class="purchases__content">
+  <mat-spinner *ngIf="!purchasesLoaded"></mat-spinner>
+  <div *ngIf="purchasesLoaded">
+
+    <h4 *ngIf="purchases.length === 0">No purchases</h4>
+
+    <div class="purchases__list" *ngIf="purchases.length">
+      <div class="purchase-item__row purchase-item__row-header">
+        <div class="purchase-item__col">#</div>
+        <div class="purchase-item__col">Date</div>
+        <div class="purchase-item__col">Items</div>
+        <div class="purchase-item__col">Quantity</div>
+        <div class="purchase-item__col">Seller</div>
+        <div class="purchase-item__col">Status</div>
+        <div class="purchase-item__col">Total</div>
+        <div class="purchase-item__col"></div>
+      </div>
+      <purchase-item *ngFor="let purchase of purchases" [purchase]="purchase"></purchase-item>
+    </div>
+    <div class="purchases__btns">
+      <button mat-stroked-button color="primary" 
+          (click)="loadMore()"
+          [disabled]="isAllPurchasesLoaded">Show more</button>
+    </div>
+  </div>
+</div>
+
+<div class="purchases__pagination" *ngIf="purchases.length">
+  <ul class="pagination">
+    <li class="pagination-item">
+      <button mat-mini-fab>
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <button mat-button>Back</button>
+    </li>
+    <li class="pagination-item">
+      <button mat-button (click)="getPurchases(1)">1</button>
+    </li>
+    <li class="pagination-item">
+      <button mat-button (click)="getPurchases(2)">2</button>
+    </li>
+    <li class="pagination-item">
+      <button mat-button (click)="getPurchases(3)">3</button>
+    </li>
+    <li class="pagination-item">
+      <button mat-button>...</button>
+    </li>
+    <li class="pagination-item">
+      <button mat-button (click)="getPurchases(20)">20</button>
+    </li>
+    <li class="pagination-item">
+      <button mat-button>Next</button>
+      <button mat-mini-fab>
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </li>
+  </ul>
+</div>

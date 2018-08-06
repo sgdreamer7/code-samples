@@ -1,0 +1,119 @@
+@import "styles/variables";
+
+
+.main-content {
+  width: 100%;
+
+  &__header {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__tool-bar {
+    color: $gray-text;
+    min-width: 350px;
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .disabled {
+      margin: 0 5px;
+      color: $gray-text;
+      cursor: pointer;
+    }
+
+    .active {
+      margin: 0 5px;
+      color: $cyan;
+      cursor: pointer;
+    }
+   
+    .sorting {
+      margin-left: 30px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: $gray-text;
+
+      &__trigger {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.wishlist {
+  margin: 20px auto;
+  max-width: 1280px;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+      
+    &_empty {
+      height: 60vh;
+    }
+  }
+
+  &__panel {
+    position: relative;
+    width: 100%;
+    background-color: $transparent-yellow;
+    border-radius: 13px;
+    font-size: 16px;
+    padding: 24px 32px;
+
+    &-close {
+      position: absolute;
+      right: 22px;
+      top: 22px;
+      cursor: pointer;
+    }
+  }
+
+  &__banner {
+    height: 40vh;
+    width: 100%;
+    background: url('/assets/images/wishlist.png') center no-repeat;
+    background-size: contain;
+  }
+
+  &__actions {
+    color: $gray-text;
+    text-align: center;
+
+    div {
+      margin: 10px 0;
+    }
+  }
+
+  &__suggestions {
+    width: 100%;
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+
+    grid-item {
+      width: 25%
+    }
+  }
+
+  .list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

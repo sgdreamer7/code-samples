@@ -1,0 +1,75 @@
+@import "styles/variables";
+
+.footer {
+  padding: 40px 0 80px 0;
+
+  &__container {
+    width: auto;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  &__list {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &-title {
+      margin-bottom: 0;
+    }
+
+    &-item {
+      cursor: pointer;
+      margin: 10px 0;
+    }
+  }
+
+  &__contacts {
+    width: 40%;
+  }
+
+  .social {
+    display: flex;
+    .icon {
+      margin-right: 10px;
+      width: 32px;
+      height: 32px;
+      background-size: contain !important;
+
+      &-fb {
+        background: url('/assets/images/icon_facebook.png') center no-repeat;
+      }
+
+      &-yt {
+        background: url('/assets/images/youtube.png') center no-repeat;
+      }
+
+      &-ig {
+        background: url('/assets/images/instagram.png') center no-repeat;
+      }
+
+      &-pt {
+        background: url('/assets/images/pinterest.png') center no-repeat;
+      }
+    }
+  }
+
+  .subscription {
+
+    mat-form-field {
+      color: $gray-text;
+      width: 50%;
+      margin-right: 20px;
+    }
+  }
+
+  &__copyright {
+    color: $gray-text;
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,82 @@
+<div class="join-page__container">
+  <div class="join-page__form">
+    
+    <h2 class="join-page__title" [translate]="'Auth.Join'"></h2>
+    
+    <div class="auth-form__container">
+      <form [formGroup]="joinForm" (ngSubmit)="register($event)" class="auth-form">
+        
+        <mat-form-field class="form-group auth-form__input-wrap">
+          <input matInput 
+              placeholder="{{ 'Auth.Your Name' | translate }}"
+              class="form-control auth-form__input"
+              formControlName="name">
+        </mat-form-field>
+        
+        <div *ngIf="joinForm['controls'].email.invalid && joinForm['controls'].email.touched"
+            class="auth-form__error"
+            [translate]="'Auth.Email is invalid'">
+        </div>
+        <mat-form-field class="form-group auth-form__input-wrap">
+          <input matInput 
+              placeholder="Email"
+              type="email"
+              class="form-control auth-form__input"
+              formControlName="email">
+        </mat-form-field>
+
+        <div *ngIf="joinForm['controls'].password_group['controls'].password.invalid
+                  && joinForm['controls'].password_group['controls'].password.touched"
+            class="auth-form__error"
+            [translate]="'Auth.Must be at least 8 letters long'">
+        </div>
+        <div *ngIf="joinForm['controls'].password_group.invalid 
+         && joinForm['controls'].password_group['controls'].password_confirm.touched"
+            class="auth-form__error"
+             [translate]="'Auth.Password mismatch'">
+        </div>
+        <div class="auth-form__password-group" formGroupName="password_group">
+          <mat-form-field class="form-group auth-form__input-wrap">
+            <input matInput 
+                placeholder="{{ 'Auth.Create Password' | translate}}"
+                type="password"
+                class="form-control auth-form__input"
+                formControlName="password">
+          </mat-form-field>
+
+            
+          <mat-form-field class="form-group auth-form__input-wrap">
+            <input matInput 
+                placeholder="{{ 'Auth.Confirm Password' | translate }}"
+                type="password"
+                class="form-control auth-form__input"
+                formControlName="password_confirm">
+          </mat-form-field>
+        </div>
+        <button type="submit"
+            role="submit" 
+            class="btn btn-filled green"
+            [disabled]="!joinForm.valid"
+            [translate]="'Auth.Join'">
+        </button>
+      </form>
+      <p class="join-page__terms"
+       [translate]="'Auth.By clicking Join, you confirm that you accept our'">
+        <a href="" [translate]="'Auth.Terms & Conditions'"></a>
+      </p>
+
+      <div class="join-page__socials">
+        <span [translate]="'Auth.or continue with'"></span>
+        (F) (G)
+      </div>
+
+      <div class="join-page__login"
+          [translate]="'Auth.Are you a member?'">
+        <a [routerLink]="'/sign-in'"  [translate]="'Auth.Sign in now'"></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="join-page__bg"></div>
+</div>

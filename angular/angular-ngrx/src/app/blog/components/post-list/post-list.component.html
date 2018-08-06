@@ -1,0 +1,52 @@
+<div class="post-list" *ngIf="(loading$ | async)">
+  <div class="post-list__item post"
+      *ngFor="let post of (posts$ | async); let i = index;"
+      [class.full]="i === 0 || i % 9 === 0">
+    <div class="post__thumbnail"
+        (click)="readPost($event, post)">
+      <img [src]="post.thumbnail" [alt]="post.id">
+    </div>
+    <div class="post__body">
+      <mat-chip-list class="post__categories">
+        <mat-chip color="primary"
+            *ngFor="let category of post.categories"
+            selected="true"
+            disabled="true"
+            (click)="redirectToCategory($event, category)">
+          {{ category.name }}
+        </mat-chip>
+      </mat-chip-list>
+      
+      <h3 class="post__title"
+          (click)="readPost($event, post)">
+        {{ post.title }}
+      </h3>
+      <div class="post__body"
+          (click)="readPost($event, post)">
+        {{ post.preview }}
+      </div>
+    </div>
+  </div>
+  <div class="post-list__pagination pagination">
+    <div class="pagination__showmore">
+      <div class="btn btn-rounded cyan"
+          [translate]="'Blog.Show More'">
+      </div>
+    </div>
+    <div class="pagination__items">
+      <div class="pagination__item pagination__item_back pagination__item_disabled" disabled>
+        <mat-icon>chevron_left</mat-icon>
+        <span [translate]="'Blog.Back'"></span>
+      </div>
+      <div class="pagination__item pagination__item_current">1</div>
+      <div class="pagination__item">2</div>
+      <div class="pagination__item">3</div>
+      <div class="pagination__item">...</div>
+      <div class="pagination__item">20</div>
+      <div class="pagination__item pagination__item_next">
+        <span [translate]="'Blog.Next'"></span>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

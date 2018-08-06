@@ -1,0 +1,108 @@
+<div *ngIf="!(user$ | async)">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!!(user$ | async)">
+  <h2>Profile</h2>
+
+  <h4>User info</h4>
+
+  <div class="profile-icon__wrap" *ngIf="!!(user$ | async)">
+    <div class="profile-icon__cont">
+      <img class="profile-icon" [src]="user.avatar_url" alt="">
+      <div class="profile-icon__btns">
+        <button mat-button type="button">Edit</button>
+        <button mat-button type="button">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <form class="form profile-form" [formGroup]="profileForm" novalidate>
+
+    <div class="profile-form__row">
+      <div class="profile-form__col">
+        <mat-form-field>
+          <input matInput type="text" class="form-control" placeholder="Your name" formControlName="username">
+          <mat-error>Hint</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="email" class="form-control" placeholder="Your email" [value]="user.email" disabled>
+        </mat-form-field>
+        <button mat-button type="button" (click)="openEmailModal()">Change email</button>
+
+        <div formGroupName="address">
+          <mat-form-field formGroupName="city">
+            <input type="text" placeholder="City" matInput formControlName="name" [matAutocomplete]="autoCity">
+            <mat-autocomplete #autoCity="matAutocomplete" (optionSelected)="selectCity($event.option.value)">
+              <mat-option *ngFor="let city of (cities$ | async)" [value]="city">
+                {{ city.name }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="profile-form__col">
+        <div formGroupName="address">
+          <mat-form-field formGroupName="country">
+            <input type="text" placeholder="Country" matInput formControlName="name" [matAutocomplete]="autoCountry">
+            <mat-autocomplete #autoCountry="matAutocomplete" (optionSelected)="selectCountry($event.option.value)">
+              <mat-option *ngFor="let country of (countries$ | async)" [value]="country">
+                {{ country.name }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline">
+          <textarea matInput placeholder="About me" formControlName="about"></textarea>
+          <mat-error>500 characters</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <h4 class="profile-form__title">Shipping Address</h4>
+    <div class="profile-form__row">
+      <div class="profile-form__col">
+        <mat-form-field formGroupName="address">
+          <input matInput type="text" class="form-control" placeholder="Street address" formControlName="street">
+        </mat-form-field>
+
+        <mat-form-field formGroupName="address">
+          <input matInput type="text" class="form-control" placeholder="State/Region" formControlName="state">
+        </mat-form-field>
+      </div>
+
+      <div class="profile-form__col">
+        <mat-form-field formGroupName="address">
+          <input matInput type="number" class="form-control" placeholder="Postcode" formControlName="postal_code">
+        </mat-form-field>
+
+
+        <mat-form-field formArrayName="phones" *ngFor="let number of phonesControl.controls; index as i">
+          <input matInput type="tel" class="form-control" placeholder="Phone number" [formControlName]="i">
+          <mat-icon matSuffix *ngIf="i > 0" (click)="deletePhone(i)" svgIcon="thrash"></mat-icon>
+        </mat-form-field>
+
+        <button type="button" mat-button (click)="addPhone()">Add another phone number</button>
+
+      </div>
+    </div>
+
+    <h4 class="profile-form__title">Change Password</h4>
+    <div class="profile-form__row">
+      <div class="profile-form__col">
+        <mat-form-field>
+          <input matInput type="password" class="form-control" placeholder="Your password*" value="*****" disabled>
+        </mat-form-field>
+        <button type="button" mat-button (click)="openPasswordModal()">Change password</button>
+      </div>
+    </div>
+    <div class="profile-form__btns">
+      <button type="button" mat-raised-button color="accent" [disabled]="formSubmitted" (click)="saveProfile()">Save changes</button>
+
+      <button type="button" mat-button (click)="openDeleteProfileModal()">Delete profile</button>
+    </div>
+  </form>
+</div>

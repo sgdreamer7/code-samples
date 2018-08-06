@@ -1,0 +1,13 @@
+.profile-toolbar__item {
+
+  path {
+    transition: .2s all linear;
+  }
+
+  &.active,
+  &:hover {
+    mat-icon path {
+      fill: $cyan;
+    }
+  }
+}

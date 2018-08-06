@@ -1,0 +1,13 @@
+<div class="preview" *ngIf="thumbnails">
+  <div class="preview__column">
+    <div class="preview__item" 
+        *ngFor="let image of thumbnails"
+        [ngClass]="{ 'preview__item_selected': image === mainImage }"
+        (mouseover)="changeMainImage(image)">
+      <img [src]="image" alt="vars">
+    </div>
+  </div>
+  <div class="preview__main">
+    <img [src]="mainImage" alt="main">
+  </div>
+</div>

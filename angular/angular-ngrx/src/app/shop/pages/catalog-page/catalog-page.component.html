@@ -1,0 +1,93 @@
+<div class="catalog-page">
+  <div class="products">
+    <div class="sidebar">
+      <div> Bread > Crumb</div>
+      <div> Current Category</div>
+      <filters-panel></filters-panel>
+    </div>
+    <div class="main-content">
+      <div class="main-content__header">
+        <span [translate]="'Shop.Displaying'"
+        [translateParams]="{ 
+          now: '1-36',
+          general: '3306'
+        }"></span>
+
+        <div class="main-content__tool-bar">
+          <mat-icon 
+              (click)="setCurrentMode('grid')"
+              class="disabled"
+              [class.active]="currentMode === 'grid'">
+            grid_on
+          </mat-icon>
+          <mat-icon
+              (click)="setCurrentMode('list')"
+              class="disabled"
+              [class.active]="currentMode === 'list'">
+            list
+          </mat-icon>
+          <div class="sorting">
+            <span [translate]="'Shop.sort by'"></span>
+            <mat-menu #appMenu="matMenu"
+                yPosition="below"
+                [overlapTrigger]="false">
+              <button mat-menu-item>
+                <span [translate]="'Shop.Price from low'"></span>
+              </button>
+              <button mat-menu-item>
+                <span [translate]="'Shop.Price from high'"></span>
+              </button>
+              <button mat-menu-item>
+                <span [translate]="'Shop.Rating from low'"></span>
+              </button>
+              <button mat-menu-item>
+                <span [translate]="'Shop.Rating from high'"></span>
+              </button>
+            </mat-menu>
+
+            <div class="sorting__trigger" [matMenuTriggerFor]="appMenu">
+              <span [translate]="'Shop.Price from low'"></span>
+              <mat-icon>expand_more</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!(productsLoaded$ | async)" class="loader">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div *ngIf="!!(productsLoaded$ | async)">
+        <div class="grid-mode grid" 
+            *ngIf="currentMode === 'grid'">
+            <grid-item *ngFor="let product of (products$ | async)" [product]="product"></grid-item>
+        </div>
+
+        <div class="list-mode list"
+            *ngIf="currentMode === 'list'">
+            <list-item *ngFor="let product of (products$ | async)" [product]="product"></list-item>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pagination">
+    <div class="pagination__showmore">
+      <div class="btn btn-rounded cyan">
+        Show More
+      </div>
+    </div>
+    <div class="pagination__items">
+      <div class="pagination__item pagination__item_back pagination__item_disabled" disabled>
+        <mat-icon>chevron_left</mat-icon>
+        <span>Back</span>
+      </div>
+      <div class="pagination__item pagination__item_current">1</div>
+      <div class="pagination__item">2</div>
+      <div class="pagination__item">3</div>
+      <div class="pagination__item">...</div>
+      <div class="pagination__item">20</div>
+      <div class="pagination__item pagination__item_next">
+        <span>Next</span>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

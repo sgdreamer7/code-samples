@@ -1,0 +1,43 @@
+<div *ngIf="product" class="product">
+  <a  [routerLink]="['', 'shop', 'products', product.id]">
+    <div class="product__thumbnail" [ngStyle]="{'background-image': 'url(' + product.thumbnail + ')'}"></div>
+  </a>
+
+  <div class="product__stats">
+    <div class="product__rating">
+      <mat-icon 
+        *ngFor="let star of [1,2,3,4,5]; let i = index"
+        [color]="i < product.rated ? 'primary' : null"
+        svgIcon="star">
+      </mat-icon>
+    </div>
+
+    <div class="product__reviews"
+        [translate]="'ProductItem.reviews'"
+        [translateParams]="{ value: product.reviews_count }">
+    </div>
+  </div>
+
+
+  <a class="product__name" [routerLink]="['', 'shop', 'products', product.id]">
+    {{ product.name }}
+  </a>
+
+  <p class="product__sku">
+    SKU {{ product.sku }}
+  </p>
+  <div class="product__footer">
+    <p class="product__price">
+      ${{ product.price }}
+    </p>
+    <div class="product__actions">
+      <div class="btn btn-icon">
+        <mat-icon svgIcon="heart"></mat-icon>
+      </div>
+      <div class="btn btn-icon green">
+        <mat-icon svgIcon="cart"></mat-icon>
+      </div>
+    </div>
+  </div>
+
+</div>

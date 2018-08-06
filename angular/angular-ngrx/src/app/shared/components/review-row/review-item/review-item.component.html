@@ -1,0 +1,34 @@
+<div *ngIf="review" class="review" [class.reviewless]="type !== 'review'">
+  <div class="review__thumbnail" [ngStyle]="{'background-image': 'url(' + review.thumbnail + ')'}"></div>
+
+  <div class="review__stats">
+    <div class="review__rating">
+      <mat-icon 
+        *ngFor="let star of [1,2,3,4,5]; let i = index"
+        [color]="i < review.rated ? 'primary' : null"
+        svgIcon="star">
+      </mat-icon>
+    </div>
+  </div>
+
+  <p class="review__name">
+    {{ review.name }}
+  </p>
+
+  <p class="review__sku">
+    SKU {{ review.sku }}
+  </p>
+
+  <div class="review__text">
+    {{ review.text }}
+  </div>
+
+  <div class="review__author">
+    <div class="review__author-avatar" [ngStyle]="{'background-image': 'url(' + review.author_avatar + ')'}"></div>
+    <div class="review__author-details">
+      <h4>{{ review.author }}</h4>
+      <p>{{ review.created_at | date: 'short' }}</p>
+    </div>
+  </div>
+
+</div>

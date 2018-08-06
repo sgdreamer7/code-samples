@@ -1,0 +1,185 @@
+{
+  "Menu": {
+    "Shop": "Shop",
+    "Workflow": "Workflow",
+    "About": "About",
+    "Blog": "Blog",
+    "Logout": "Logout"
+  },
+
+  "Auth": {
+    "Sign In": "Sign in",
+    "Join": "Join",
+
+    "Your Name": "Your Name",
+    "Your Email": "Your Email",
+    "Your Password": "Your Password",
+    "Create Password": "Create Password",
+    "Confirm Password": "Confirm Password",
+
+    "By clicking Join, you confirm that you accept our": "By clicking Join, you confirm that you accept our",
+    "Terms & Conditions":  "Terms & Conditions",
+
+    "or continue with": "or continue with",
+
+    "Are you a member?" : "Are you a member?",
+    "Sign in now": "Sign in now",
+
+    "Email is invalid": "Email is invalid",
+    "Must be at least 8 letters long" : "Must be at least 8 letters long",
+    "Password mismatch": "Password mismatch",
+
+    "Remember Me": "Remember Me",
+    "Forgot your password?": "Forgot your password?",
+
+    "Not a member yet?": "Not a member yet?",
+    "Join now": "Join now",
+
+    "Password recovery": "Password recovery",
+    "Reestablish": "Reestablish",
+    "Successfully signed-in": "Successfully signed-in",
+    "Successfully registered": "Successfully registered",
+    "To reset your password check your email": "To reset your password check your email",
+    "Failed": "Ooops... seems like something failed",
+    "Welcome back": "Welcome Back"
+  },
+
+
+  "Banner": {
+    "Buy awesome things":  "Buy awesome things directly from makers.",
+    "The monkey-rope": "The monkey-rope is found in all whalers; but it was only in the Pequod that the monkey and his holder were ever",
+    "Create a store": "Create a store",
+    "Buy product": "Buy product"
+  },
+
+  "Features": {
+    "Do more with us": "Do more with us",
+    "Craft & Sell": "Craft & Sell",
+    "Create a store": "Create a store",
+    "Create your own e-commerce": "Create your own e-commerce store with a simple click of a button. Our platform has evertyhing you need to run your online business and build your brand.",
+    "Buy" : "Buy",
+    "Buy product": "Buy product",
+    "Killer feature": "Killer feature",
+    "Do it": "Do it"
+  },
+
+  "Pros": {
+    "You can buy all": "You can buy all",
+    "A wonderful serenity has taken possesion": "A wonderful serenity has taken possesion"
+  },
+
+  "MainPosts": {
+    "4 reasons": "4 reasons you'll love the new IBM Maximo Developer Center",
+    "Attention all Maximo": "Attention all Maximo Asset Management developers and business partners How do you make a world-leading EAM solution even better?",
+    "Read": "Read",
+    "What if your brand": "What if your brand was truly connected?",
+    "At IBM, we": "At IBM, we've built a business by asking the big \"what ifs\". and in my role, I spend most of my time thinking about the connectedness ..."
+  },
+
+  "Footer": {
+    "Help": "Help",
+    "FAQ": "FAQ",
+    "How it works": "How it works",
+    "Terms of service": "Terms of service",
+
+    "Policy": "Policy",
+    "API": "API",
+    "Badges": "Badges",
+    "Our guarantee": "Our guarantee",
+
+    "Company": "Company",
+    "Blog": "Blog",
+    "About us": "About us",
+    "Contact": "Contact",
+
+    "Stay Tuned": "Stay Tuned",
+    "Enter email": "Enter email",
+    "Subscribe": "Subscribe"
+  },
+
+  "ProductRow": {
+    "New": "New products",
+    "Popular": "Popular products"
+  },
+
+  "ProductItem": {
+    "reviews" : "{{value}} reviews"
+  },
+
+  "Reviews": {
+    "Recent reviews from happy people": "Recent reviews from happy people"
+  },
+
+  "PROFILE": {
+    "PROFILE": "Profile"
+  },
+
+  "Blog": {
+    "Blog": "Blog",
+    "All": "All",
+    "Buying": "Buying",
+    "Community": "Community",
+    "Meetup": "Meetup",
+    "Selling": "Selling",
+
+    "Show More": "Show More",
+    "Back": "Back",
+    "Next": "Next",
+
+    "Reply": "Reply",
+    "No Comments": "No Comments",
+    "One Comment": "One Comment",
+    "Comments": "{{value}} Comments",
+    "Sign in": "Sign in",
+    "to post": " to post a comment",
+    "Submit": "Submit"
+  },
+
+  "Shop": {
+    "Reset filters": "Reset filters",
+    "Categories": "Categories",
+    "Price, $": "Price, $",
+    "less than 100": "less than 100",
+    "more than 2000": "more than 2000",
+    "Shipping rates": "Shipping rates",
+    "Filter": "Filter",
+    "from": "from",
+    "to": "to",
+    "Displaying": "Displaying {{now}} of {{general}} products",
+    "sort by": "Sort by",
+    "Price from low": "Price from low",
+    "Price from high": "Price from high",
+    "Rating from low": "Rating from low",
+    "Rating from high": "Rating from high"
+  },
+
+  "Wishlist": {
+    "Wishlist": "Wishlist",
+    "Not Authorized": "You are not authorized, so the product will be available in your favorites only temporarily. To save the goods in your favorites forever,",
+    "sign up": "sign up",
+    "or": "or",
+    "sign in": "sign-in",
+    "We thought": "We thought you'd also like these too...",
+    "Empty": "Your wishlist is still empty, but do not be discouraged.",
+    "Return": "Return to",
+    "Home": "home",
+    "to start": "to start shopping",
+    "Start shopping": "Start shopping"
+  },
+
+  "Product": {
+    "Order List": "Order List",
+    "Features": "Features",
+    "Applications": "Applications",
+    "Rates to": "Rates to {{value}}",
+    "Shipping Rate": "Shipping Rate" ,
+    "Price": "Price",
+    "Review Breakdown": "Review Breakdown",
+    "Average Ratings": "Average Ratings",
+    "product": "Product",
+    "documentation": "Documentation",
+    "shipping": "Shipping",
+    "communication": "Communication"
+  }
+
+}

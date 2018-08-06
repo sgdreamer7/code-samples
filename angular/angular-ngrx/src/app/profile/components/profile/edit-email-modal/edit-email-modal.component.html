@@ -1,0 +1,19 @@
+<div class="mat-dialog-header">
+  <h2 mat-dialog-title>Change email</h2>
+  <mat-icon (click)="close()" svgIcon="close"></mat-icon>
+</div>
+<mat-dialog-content>
+  <form class="form" [formGroup]="emailForm" novalidate>
+    <mat-form-field>
+      <input matInput type="email" placeholder="New email" formControlName="email">
+      <mat-error *ngIf="emailControl.invalid && emailControl.touched">Incorrect email</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Your password*" formControlName="password">
+      <mat-error *ngIf="passwordControl.invalid && passwordControl.touched">Must be at least 8 letters long</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button cdkFocusInitial [disabled]="!emailForm.valid || submitted" (click)="save()">Save</button>
+</mat-dialog-actions>

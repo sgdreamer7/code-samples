@@ -1,0 +1,40 @@
+<div class="mat-dialog-header">
+  <h2 mat-dialog-title>Complain</h2>
+  <mat-icon (click)="close()" svgIcon="close"></mat-icon>
+</div>
+
+<div *ngIf="showForm">
+  <mat-dialog-content>
+    <form class="form" [formGroup]="complainForm" novalidate>
+      <mat-radio-group formControlName="type">
+        <mat-radio-button [value]="'incorrect_price'">Incorrect price</mat-radio-button>
+        <mat-radio-button [value]="'incorrect_category'">Invalid category</mat-radio-button>
+        <mat-radio-button [value]="'incorrect_paid'">Order paid, but not snipped</mat-radio-button>
+        <mat-radio-button [value]="'incorrect_price'">The received goods do not correspond to the order</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field appearance="outline">
+        <textarea matInput placeholder="Write a comment" formControlName="text"></textarea>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button 
+        color="accent" 
+        [disabled]="complainForm.invalid || submitted" 
+        (click)="sendComplain()">Send
+    </button>
+  </mat-dialog-actions>
+</div>
+
+<div *ngIf="showConfirm">
+  <mat-dialog-content>
+    <div class="complain__confirm">
+      <div class="complain__confirm-img"></div>
+      <p class="complain__confirm-text">Thank you! Your message is already flying to us and we will take action</p>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button cdkFocusInitial color="accent" (click)="close()">Close</button>
+  </mat-dialog-actions>
+</div>

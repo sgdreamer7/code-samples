@@ -1,0 +1,27 @@
+@import "styles/variables";
+
+.blog {
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 60%;
+
+    &-item.active {
+      color: $cyan;
+    }
+  }
+
+  &__search {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}

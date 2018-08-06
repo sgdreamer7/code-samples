@@ -1,0 +1,184 @@
+{
+  "Menu": {
+    "Shop": "Магазин",
+    "Workflow": "Как это работает",
+    "About": "О нас",
+    "Blog": "Блог",
+    "Logout": "Выход"
+  },
+
+  "Auth": {
+    "Sign In": "Войти",
+    "Join": "Присоединиться",
+
+    "Your Name": "Имя",
+    "Your Email": "Email",
+    "Your Password": "Пароль",
+    "Create Password": "Создайте пароль",
+    "Confirm Password": "Подтверждение пароля",
+
+    "By clicking Join, you confirm that you accept our": "Нажимая 'Войти' вы соглашаетесь с нашими",
+    "Terms & Conditions":  "Правилами использования сервиса",
+
+    "or continue with": "Или с помощью",
+
+    "Are you a member?" : "Уже зарегистрированы?",
+    "Sign in now": "Войти",
+
+    "Email is invalid": "Введите валидный Email",
+    "Must be at least 8 letters long" : "Пароль должен быть не менее 8 символов",
+    "Password mismatch": "Пароли не совпадают",
+
+    "Remember Me": "Запомнить меня",
+    "Forgot your password?": "Забыли пароль?",
+
+    "Not a member yet?": "Не зарегистрированы?",
+    "Join now": "Присоединиться",
+
+    "Password recovery": "Восстановление пароля",
+    "Reestablish": "Восстановить",
+    "Successfully signed-in": "Вы успешно вошли в систему",
+    "Successfully registered": "Регистрация прошла успешно",
+    "To reset your password check your email": "Для дальнейшего восстановления пароля проверьте свой почтовый ящик",
+    "Failed": "Упс... что-то пошло не так",
+    "Welcome back": "Welcome Back"
+  },
+
+  "Banner": {
+    "Buy awesome things":  "Buy awesome things directly from makers.",
+    "The monkey-rope": "The monkey-rope is found in all whalers; but it was only in the Pequod that the monkey and his holder were ever",
+    "Create a store": "Создать магазин",
+    "Buy product": "Купить продукт"
+  },
+
+  "Features": {
+    "Do more with us": "Делайте больше с нами",
+    "Craft & Sell": "Создавайте и продавайте",
+    "Create a store": "Create a store",
+    "Create your own e-commerce": "Create your own e-commerce store with a simple click of a button. Our platform has evertyhing you need to run your online business and build your brand.",
+    "Buy" : "Купить",
+    "Buy product": "Купить продукт",
+    "Killer feature": "Killer feature",
+    "Do it": "Do it"
+  },
+
+  "Pros": {
+    "You can buy all": "You can buy all",
+    "A wonderful serenity has taken possesion": "A wonderful serenity has taken possesion"
+  },
+
+  "MainPosts": {
+    "4 reasons": "4 reasons you'll love the new IBM Maximo Developer Center",
+    "Attention all Maximo": "Attention all Maximo Asset Management developers and business partners How do you make a world-leading EAM solution even better?",
+    "Read": "Читать",
+    "What if your brand": "What if your brand was truly connected?",
+    "At IBM, we": "At IBM, we've built a business by asking the big \"what ifs\". and in my role, I spend most of my time thinking about the connectedness ..."
+  },
+
+  "Footer": {
+    "Help": "Помощь",
+    "FAQ": "Вопросы и Ответы",
+    "How it works": "Как это работает",
+    "Terms of service": "Правила использования сервиса",
+
+    "Policy": "Правила",
+    "API": "API",
+    "Badges": "Бейджи",
+    "Our guarantee": "Наши гарантии",
+
+    "Company": "Компания",
+    "Blog": "Блог",
+    "About us": "О нас",
+    "Contact": "Контакты",
+
+    "Stay Tuned": "Оставаться на связи",
+    "Enter email": "Введите email",
+    "Subscribe": "Подписаться"
+  },
+
+  "ProductRow": {
+    "New": "Новое",
+    "Popular": "Популярное"
+  },
+
+  "ProductItem": {
+    "reviews" : "{{value}} отзывов"
+  },
+
+  "Reviews": {
+    "Recent reviews from happy people": "Отзывы довольных покупателей"
+  },
+
+  "PROFILE": {
+    "PROFILE": "Профіль"
+  },
+
+  "Blog": {
+    "Blog": "Блог",
+    "All": "Все",
+    "Buying": "Покупки",
+    "Community": "Сообщество",
+    "Meetup": "Встречи",
+    "Selling": "Продажи",
+
+    "Show More": "Загрузить ещё",
+    "Back": "Назад",
+    "Next": "Вперёд",
+
+    "Reply": "Ответить",
+    "No Comments": "Нет комментариев",
+    "One Comment": "Один комментарий",
+    "Comments": "{{value}} комментариев",
+    "Sign in": "Войдите",
+    "to post": ", чтобы оставить комментарий",
+    "Submit": "Отправить"
+  },
+
+  "Shop": {
+    "Reset filters": "Сбросить фильтры",
+    "Categories": "Категории",
+    "Price, $": "Цена, $",
+    "less than 100": "меньше 100",
+    "more than 2000": "больше 2000",
+    "Shipping rates": "Рейтинги доставки",
+    "Filter": "Фильтр",
+    "from": "от",
+    "to": "до",
+    "Displaying": "Показано {{now}} из {{general}} продуктов",
+    "sort by": "Сортировать по",
+    "Price from low": "цене, с недорогих",
+    "Price from high": "цене, с дорогих",
+    "Rating from low": "оценкам, с низких",
+    "Rating from high": "оценкам, с высоких"
+
+  },
+
+  "Wishlist": {
+    "Wishlist": "[ua]Wishlist",
+    "Not Authorized": "[ua]You are not authorized, so the product will be available in your favorites only temporarily. To save the goods in your favorites forever,",
+    "sign up": "[ua]sign up",
+    "or": "[ua]or",
+    "sign in": "[ua]sign in",
+    "We thought": "[ua]We thought you'd also like these too...",
+    "Empty": "[ua]Your wishlist is still empty, but do not be discouraged.",
+    "Return": "[ua]Return to",
+    "Home": "[ua]home",
+    "to start": "[ua]to start shopping",
+    "Start shopping": "[ua]Start shopping"
+  },
+
+  "Product": {
+    "Order List": "[ua]Order List",
+    "Features": "[ua]Features",
+    "Applications": "[ua]Applications",
+    "Rates to": "[ua]Rates to {{value}}",
+    "Shipping Rate": "[ua]Shipping Rate" ,
+    "Price": "[ua]Price",
+    "Review Breakdown": "[ua]Review Breakdown",
+    "Average Ratings": "[ua]Average Ratings",
+    "product":"[ua]Product",
+    "documentation":"[ua]Documentation",
+    "shipping": "[ua]Shipping",
+    "communication": "[ua]Communication"
+  }
+}
