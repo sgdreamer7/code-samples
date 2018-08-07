@@ -13,7 +13,8 @@ export class LoginContainer extends React.Component {
   }
 
   onSubmit = (authData) => {
-    this.props.action.login(authData);
+    console.log(this.props);
+    this.props.actions.login(authData);
   }
 
   render() {

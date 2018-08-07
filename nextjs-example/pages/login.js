@@ -32,7 +32,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <st.LoginPageWrapper>
-        <LoginContainer />
+        <LoginContainer {...this.props} />
       </st.LoginPageWrapper>
     );
   }

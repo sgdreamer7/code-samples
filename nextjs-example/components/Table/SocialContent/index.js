@@ -1,1 +1,0 @@
-export { SocialContent } from './SocialContent';
