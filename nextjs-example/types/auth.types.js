@@ -1,5 +1,5 @@
-export const LOGIN_REQUEST = '@hr-portal/AUTH/LOGIN_REQUEST';
-export const LOGIN_SUCCESS = '@hr-portal/AUTH/LOGIN_SUCCESS';
+export const LOGIN_REQUEST = '@nextjs-example/AUTH/LOGIN_REQUEST';
+export const LOGIN_SUCCESS = '@nextjs-example/AUTH/LOGIN_SUCCESS';
 export const LOGIN_ERROR = '@nextjs-example/AUTH/LOGIN_ERROR';
 
 export const CHECK_TOKEN = '@nextjs-example/AUTH/CHECK_TOKEN';
