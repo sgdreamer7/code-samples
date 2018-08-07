@@ -13,30 +13,30 @@ export class LoginContainer extends React.Component {
   }
 
   onSubmit = (authData) => {
-    console.log(this.props);
     this.props.actions.login(authData);
   }
 
   render() {
+    const { processing } = this.props;
     return (
       <Form onSubmit={this.onSubmit} render={({ handleSubmit }) => (
         <st.LoginFormCard>
           <form onSubmit={handleSubmit}>
             <FormField
               name="email"
-              validate={Validators.isEmail()}
+              validate={Validators.isEmail() && Validators.required()}
               placeholder="Email"
               component={Input}
             />
             <FormField
               name="password"
               validate={Validators.required()}
-              placeholder="Пароль"
+              placeholder="Password"
               type="password"
               component={Input}
             />
             <st.SubmitButtonWrapper>
-              <SubmitButton type="primary" htmlType="submit" onClick={handleSubmit}>Вход</SubmitButton>
+              <SubmitButton type="primary" htmlType="submit" onClick={handleSubmit} loading={processing}>Sign In</SubmitButton>
             </st.SubmitButtonWrapper>
           </form>
         </st.LoginFormCard>

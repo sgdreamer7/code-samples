@@ -2,6 +2,10 @@ export const LOGIN_REQUEST = '@hr-portal/AUTH/LOGIN_REQUEST';
 export const LOGIN_SUCCESS = '@hr-portal/AUTH/LOGIN_SUCCESS';
 export const LOGIN_ERROR = '@hr-portal/AUTH/LOGIN_ERROR';
 
+export const SIGNUP_REQUEST = '@hr-portal/AUTH/SIGNUP_REQUEST';
+export const SIGNUP_SUCCESS = '@hr-portal/AUTH/SIGNUP_SUCCESS';
+export const SIGNUP_ERROR = '@hr-portal/AUTH/SIGNUP_ERROR';
+
 export const CHECK_TOKEN = '@hr-portal/AUTH/CHECK_TOKEN';
 export const UPDATE_TOKEN = '@hr-portal/AUTH/UPDATE_TOKEN';
 export const UPDATE_TOKEN_SUCCESS = '@hr-portal/AUTH/UPDATE_TOKEN_SUCCESS';
