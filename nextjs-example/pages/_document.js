@@ -3,7 +3,7 @@ import { ServerStyleSheet } from 'styled-components';
 import globalAntStyles from 'antd/dist/antd.min.css';
 
 export default class MyDocument extends Document {
-  static getInitialProps ({ renderPage }) {
+  static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet();
     const page = renderPage(App => props => sheet.collectStyles(<App {...props} />));
     const styleTags = sheet.getStyleElement();
@@ -14,7 +14,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>HR Portal</title>
+          <title>NextJS Example</title>
           <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
           <meta httpEquiv='X-UA-Compatible' content='chrome=1, IE=edge' />
           <meta httpEquiv='Cache-Control' content='no-cache, no-store, must-revalidate' />
@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <div className='root' style={{ height: '100%' }}>
-            <Main/>
+            <Main />
           </div>
           <NextScript />
         </body>
