@@ -1,0 +1,52 @@
+{
+  "presets": [
+    "next/babel"
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    "@babel/plugin-proposal-function-sent",
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-numeric-separator",
+    "@babel/plugin-proposal-throw-expressions",
+    [
+      "inline-import",
+      {
+        "extensions": [
+          ".css"
+        ]
+      }
+    ],
+    [
+      "styled-components",
+      {
+        "ssr": true,
+        "displayName": true,
+        "preprocess": false
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./"
+        ],
+        "alias": {
+          "components": "./components",
+          "config": "./config",
+          "actions": "./actions",
+          "containers": "./containers",
+          "reducers": "./reducers",
+          "styles": "./styles",
+          "sagas": "./sagas",
+          "types": "./types",
+          "utils": "./utils"
+        }
+      }
+    ]
+  ]
+}
