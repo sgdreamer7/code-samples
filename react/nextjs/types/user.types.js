@@ -1,2 +1,2 @@
-export const UPDATE_USER = '@hr-portal/USER/UPDATE_USER';
-export const CLEAR_USER = '@hr-portal/USER/CLEAR_USER';
+export const UPDATE_USER = '@nextjs-example/USER/UPDATE_USER';
+export const CLEAR_USER = '@nextjs-example/USER/CLEAR_USER';

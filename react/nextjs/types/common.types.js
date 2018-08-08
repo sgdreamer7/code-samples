@@ -1,1 +1,1 @@
-export const CURRENT_URL = '@hr-portal/COMMON/SET_CURRENT_URL';
+export const CURRENT_URL = '@nextjs-example/COMMON/SET_CURRENT_URL';

@@ -5,27 +5,28 @@ import isEmail from 'validator/lib/isEmail';
 
 import * as st from './RegistrationContainer.style';
 import { Input, FormField, SubmitButton } from '../../components/Form';
+import * as consts from '../../constants';
 
 const validate = ({ email, password, confirmPassword }) => {
   const errors = {};
-  const passwordRE = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  const passwordRE = consts.common.password;
 
   if (!email) {
-    errors.email = 'Email is required';
+    errors.email = consts.errors.required;
   } else if (!isEmail(email)) {
-    errors.email = 'Email is not correct';
+    errors.email = consts.errors.emailNotCorrect;
   }
 
   if (!password) {
-    errors.password = 'Password is required';
+    errors.password = consts.errors.required;
   } else if (!passwordRE.test(password)) {
-    errors.password = 'Password must contain at least 6 characters, one number, one lowecase and one uppercase letter';
+    errors.password = consts.errors.passwordNotCorrect;
   }
 
   if (!confirmPassword) {
-    errors.confirmPassword = 'Please confirm your password';
+    errors.confirmPassword = consts.errors.confirmPassword;
   } else if (password !== confirmPassword) {
-    errors.confirmPassword = 'Passwords must coincide';
+    errors.confirmPassword = consts.errors.confirmPasswordNotMatch;
   }
 
   return errors;
