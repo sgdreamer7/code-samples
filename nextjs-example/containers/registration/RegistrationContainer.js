@@ -36,6 +36,7 @@ export class RegistrationContainer extends React.Component {
     actions: PropTypes.shape({
       signup: PropTypes.func.isRequired,
     }),
+    processing: PropTypes.bool.isRequired,
   }
 
   onSubmit = (authData) => {

@@ -10,6 +10,7 @@ export class LoginContainer extends React.Component {
     actions: PropTypes.shape({
       login: PropTypes.func.isRequired,
     }),
+    processing: PropTypes.bool.isRequired,
   }
 
   onSubmit = (authData) => {
@@ -24,7 +25,7 @@ export class LoginContainer extends React.Component {
           <form onSubmit={handleSubmit}>
             <FormField
               name="email"
-              validate={Validators.isEmail() && Validators.required()}
+              validate={Validators.required()}
               placeholder="Email"
               component={Input}
             />

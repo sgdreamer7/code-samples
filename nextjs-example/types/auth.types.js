@@ -1,14 +1,14 @@
-export const LOGIN_REQUEST = '@hr-portal/AUTH/LOGIN_REQUEST';
-export const LOGIN_SUCCESS = '@hr-portal/AUTH/LOGIN_SUCCESS';
-export const LOGIN_ERROR = '@hr-portal/AUTH/LOGIN_ERROR';
+export const LOGIN_REQUEST = '@nextjs-example/AUTH/LOGIN_REQUEST';
+export const LOGIN_SUCCESS = '@nextjs-example/AUTH/LOGIN_SUCCESS';
+export const LOGIN_ERROR = '@nextjs-example/AUTH/LOGIN_ERROR';
 
-export const SIGNUP_REQUEST = '@hr-portal/AUTH/SIGNUP_REQUEST';
-export const SIGNUP_SUCCESS = '@hr-portal/AUTH/SIGNUP_SUCCESS';
-export const SIGNUP_ERROR = '@hr-portal/AUTH/SIGNUP_ERROR';
+export const SIGNUP_REQUEST = '@nextjs-example/AUTH/SIGNUP_REQUEST';
+export const SIGNUP_SUCCESS = '@nextjs-example/AUTH/SIGNUP_SUCCESS';
+export const SIGNUP_ERROR = '@nextjs-example/AUTH/SIGNUP_ERROR';
 
-export const CHECK_TOKEN = '@hr-portal/AUTH/CHECK_TOKEN';
-export const UPDATE_TOKEN = '@hr-portal/AUTH/UPDATE_TOKEN';
-export const UPDATE_TOKEN_SUCCESS = '@hr-portal/AUTH/UPDATE_TOKEN_SUCCESS';
+export const CHECK_TOKEN = '@nextjs-example/AUTH/CHECK_TOKEN';
+export const UPDATE_TOKEN = '@nextjs-example/AUTH/UPDATE_TOKEN';
+export const UPDATE_TOKEN_SUCCESS = '@nextjs-example/AUTH/UPDATE_TOKEN_SUCCESS';
 
-export const LOGOUT_REQUEST = '@hr-portal/AUTH/LOGOUT_REQUEST';
-export const CHANGE_USER_AUTH = '@hr-portal/AUTH/CHANGE_USER_AUTH';
+export const LOGOUT_REQUEST = '@nextjs-example/AUTH/LOGOUT_REQUEST';
+export const CHANGE_USER_AUTH = '@nextjs-example/AUTH/CHANGE_USER_AUTH';
