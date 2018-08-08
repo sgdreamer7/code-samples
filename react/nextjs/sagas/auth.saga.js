@@ -14,6 +14,8 @@ function* login() {
 
       const { caller } = ApiService.instance;
 
+      yield put(authActions.loginSuccess());
+
       // const { data } = yield call(caller.post, 'api/omniauth_callbacks', { code: payload.code });
 
       // const { id_token } = payload.tokenObj;
@@ -39,6 +41,23 @@ function* login() {
   }
 }
 
+function* signup() {
+  while (true) {
+    try {
+      const { payload, onSuccess } = yield take(AUTH_TYPES.SIGNUP_REQUEST);
+
+      console.log(payload);
+
+      const { caller } = ApiService.instance;
+
+      yield put(authActions.signupSuccess());
+    } catch (e) {
+      console.log('Signup error -> ', e);
+      yield authActions.signupError(e);
+    }
+  }
+}
+
 function* logout() {
   while (true) {
     try {
@@ -56,6 +75,7 @@ function* logout() {
 export const AuthSaga = function* () {
   yield all([
     spawn(login),
+    spawn(signup),
     spawn(logout),
   ]);
 };

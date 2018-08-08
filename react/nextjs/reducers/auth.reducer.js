@@ -7,7 +7,7 @@ const initialState = {
   processing: false,
 };
 
-export const AuthReducer = function (state = initialState, action) {
+export const AuthReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case TYPES.CLEAR_ERROR:
@@ -16,8 +16,8 @@ export const AuthReducer = function (state = initialState, action) {
       return { ...state, signupError: payload };
     case TYPES.CHANGE_USER_AUTH:
       return { ...state, isAuth: payload };
-    case TYPES.LOGIN:
-    case TYPES.SIGNUP:
+    case TYPES.LOGIN_REQUEST:
+    case TYPES.SIGNUP_REQUEST:
       return { ...state, processing: true };
     case TYPES.LOGIN_SUCCESS:
     case TYPES.SIGNUP_SUCCESS:

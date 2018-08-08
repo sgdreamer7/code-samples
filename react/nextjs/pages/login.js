@@ -13,7 +13,9 @@ import { authActions, userActions } from 'actions';
 
 @DefaultPage()
 @connect(
-  null,
+  state => ({
+    processing: state.auth.processing,
+  }),
   dispatch => ({ actions: bindActionCreators(authActions, dispatch) }),
 )
 export default class Login extends React.Component {
