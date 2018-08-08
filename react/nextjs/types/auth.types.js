@@ -2,6 +2,10 @@ export const LOGIN_REQUEST = '@nextjs-example/AUTH/LOGIN_REQUEST';
 export const LOGIN_SUCCESS = '@nextjs-example/AUTH/LOGIN_SUCCESS';
 export const LOGIN_ERROR = '@nextjs-example/AUTH/LOGIN_ERROR';
 
+export const SIGNUP_REQUEST = '@nextjs-example/AUTH/SIGNUP_REQUEST';
+export const SIGNUP_SUCCESS = '@nextjs-example/AUTH/SIGNUP_SUCCESS';
+export const SIGNUP_ERROR = '@nextjs-example/AUTH/SIGNUP_ERROR';
+
 export const CHECK_TOKEN = '@nextjs-example/AUTH/CHECK_TOKEN';
 export const UPDATE_TOKEN = '@nextjs-example/AUTH/UPDATE_TOKEN';
 export const UPDATE_TOKEN_SUCCESS = '@nextjs-example/AUTH/UPDATE_TOKEN_SUCCESS';
