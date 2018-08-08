@@ -5,28 +5,36 @@ import isEmail from 'validator/lib/isEmail';
 
 import * as st from './RegistrationContainer.style';
 import { Input, FormField, SubmitButton } from '../../components/Form';
-import * as consts from '../../constants';
+import { errorsConst, commonConst } from '../../constants';
 
 const validate = ({ email, password, confirmPassword }) => {
+  const {
+    REQUIRED_FIELD,
+    EMAIL_NOT_CORRECT,
+    PASSWORD_NOT_CORRECT,
+    CONFIRM_PASSWORD,
+    CONFIRM_PASSWORD_NOT_MATCH,
+  } = errorsConst;
+  const { PASSWORD_REGEXP } = commonConst;
+
   const errors = {};
-  const passwordRE = consts.common.password;
 
   if (!email) {
-    errors.email = consts.errors.required;
+    errors.email = REQUIRED_FIELD;
   } else if (!isEmail(email)) {
-    errors.email = consts.errors.emailNotCorrect;
+    errors.email = EMAIL_NOT_CORRECT;
   }
 
   if (!password) {
-    errors.password = consts.errors.required;
-  } else if (!passwordRE.test(password)) {
-    errors.password = consts.errors.passwordNotCorrect;
+    errors.password = REQUIRED_FIELD;
+  } else if (!PASSWORD_REGEXP.test(password)) {
+    errors.password = PASSWORD_NOT_CORRECT;
   }
 
   if (!confirmPassword) {
-    errors.confirmPassword = consts.errors.confirmPassword;
+    errors.confirmPassword = CONFIRM_PASSWORD;
   } else if (password !== confirmPassword) {
-    errors.confirmPassword = consts.errors.confirmPasswordNotMatch;
+    errors.confirmPassword = CONFIRM_PASSWORD_NOT_MATCH;
   }
 
   return errors;

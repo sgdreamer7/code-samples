@@ -1,2 +1,2 @@
-export * as common from './common.const';
-export * as errors from './errors.const';
+export * as commonConst from './common.const';
+export * as errorsConst from './errors.const';

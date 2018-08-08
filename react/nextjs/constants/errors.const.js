@@ -1,9 +1,9 @@
-export const required = 'This is field is required';
+export const REQUIRED_FIELD = 'This is field is required';
 
-export const emailNotCorrect = 'Email is not correct';
+export const EMAIL_NOT_CORRECT = 'Email is not correct';
 
-export const passwordNotCorrect = 'Password must contain at least 6 characters, one number, one lowecase and one uppercase letter';
+export const PASSWORD_NOT_CORRECT = 'Password must contain at least 6 characters, one number, one lowecase and one uppercase letter';
 
-export const confirmPassword = 'Please confirm your password';
+export const CONFIRM_PASSWORD = 'Please confirm your password';
 
-export const confirmPasswordNotMatch = 'Passwords must coincide';
+export const CONFIRM_PASSWORD_NOT_MATCH = 'Passwords must coincide';

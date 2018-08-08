@@ -1,1 +1,1 @@
-export const password = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+export const PASSWORD_REGEXP = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
