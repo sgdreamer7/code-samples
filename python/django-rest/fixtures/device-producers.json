@@ -1,0 +1,23 @@
+[
+  {
+    "model": "api.DeviceProducer",
+    "pk": 1,
+    "fields": {
+      "title": "ASUS"
+    }
+  },
+  {
+    "model": "api.DeviceProducer",
+    "pk": 2,
+    "fields": {
+      "title": "P-LINK"
+    }
+  },
+  {
+    "model": "api.DeviceProducer",
+    "pk": 3,
+    "fields": {
+      "title": "T-LINK"
+    }
+  }
+]

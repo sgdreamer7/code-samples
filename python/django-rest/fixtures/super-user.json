@@ -1,0 +1,19 @@
+[
+  {
+    "model": "api.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$100000$OAl6uAs4QyZE$OhlMg3JT5raF7J9vTQZnxboI9645PsBO2UaF0/LAH64=",
+      "last_login": "2018-01-28T15:09:17.442Z",
+      "is_superuser": true,
+      "email": "foo@bar.com",
+      "first_name": "foo",
+      "last_name": "bar",
+      "is_staff": true,
+      "is_active": true,
+      "is_admin": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
