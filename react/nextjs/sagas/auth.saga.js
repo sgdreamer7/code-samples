@@ -1,9 +1,9 @@
 import { spawn, all, take, call, put } from 'redux-saga/effects';
 
-import { COOKIE_TOKEN_KEY } from './../config';
-import { ApiService, CookieService } from './../utils';
-import { AUTH_TYPES } from './../types';
-import { authActions, userActions } from './../actions';
+import { COOKIE_TOKEN_KEY } from '../config';
+import { ApiService, CookieService } from '../utils';
+import { AUTH_TYPES } from '../types';
+import { authActions, userActions } from '../actions';
 
 function* login() {
   while (true) {
@@ -58,11 +58,52 @@ function* signup() {
   }
 }
 
+function* resetPassword() {
+  while (true) {
+    try {
+      const { payload, onSuccess } = yield take(
+        AUTH_TYPES.RESET_PASSWORD_REQUEST,
+      );
+
+      console.log(payload);
+
+      const { caller } = ApiService.instance;
+
+      yield put(authActions.resetPasswordSuccess());
+    } catch (e) {
+      console.log('Get token error -> ', e);
+      yield authActions.resetPasswordError(e);
+    }
+  }
+}
+
+function* changePassword() {
+  while (true) {
+    try {
+      const { payload, onSuccess } = yield take(
+        AUTH_TYPES.CHANGE_PASSWORD_REQUEST,
+      );
+
+      console.log(payload);
+
+      const { caller } = ApiService.instance;
+
+      yield put(authActions.changePasswordSuccess());
+    } catch (e) {
+      console.log('Change Password error -> ', e);
+      yield authActions.changePasswordError(e);
+    }
+  }
+}
+
 function* logout() {
   while (true) {
     try {
       const { onSuccess } = yield take(AUTH_TYPES.LOGOUT_REQUEST);
-      const token = yield call(CookieService.getFromLocalCookie, COOKIE_TOKEN_KEY);
+      const token = yield call(
+        CookieService.getFromLocalCookie,
+        COOKIE_TOKEN_KEY,
+      );
       yield call(CookieService.clear, COOKIE_TOKEN_KEY);
       yield put(userActions.clearUser());
       if (onSuccess && onSuccess instanceof Function) onSuccess();
@@ -72,10 +113,12 @@ function* logout() {
   }
 }
 
-export const AuthSaga = function* () {
+export const AuthSaga = function*() {
   yield all([
     spawn(login),
     spawn(signup),
+    spawn(resetPassword),
+    spawn(changePassword),
     spawn(logout),
   ]);
 };

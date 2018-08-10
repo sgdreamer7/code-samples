@@ -17,9 +17,9 @@ import { authActions } from 'actions';
 export default class Login extends React.Component {
   render() {
     return (
-      <st.LoginPageWrapper>
+      <st.AuthContainer>
         <RegistrationContainer {...this.props} />
-      </st.LoginPageWrapper>
+      </st.AuthContainer>
     );
   }
 }
