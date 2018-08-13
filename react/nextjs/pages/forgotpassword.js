@@ -30,7 +30,6 @@ export default class Login extends React.Component {
       const { token } = query;
       if (!token) throw new Error("Can't find token.");
       if (token) return { token };
-      return null;
     } catch (error) {
       return { error };
     }

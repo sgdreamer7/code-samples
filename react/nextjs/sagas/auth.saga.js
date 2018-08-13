@@ -10,8 +10,6 @@ function* login() {
     try {
       const { payload, onSuccess } = yield take(AUTH_TYPES.LOGIN_REQUEST);
 
-      console.log(payload);
-
       const { caller } = ApiService.instance;
 
       yield put(authActions.loginSuccess());
@@ -35,7 +33,6 @@ function* login() {
 
       // if (onSuccess && onSuccess instanceof Function) onSuccess();
     } catch (e) {
-      console.log('Login error -> ', e);
       yield authActions.loginError(e);
     }
   }
@@ -46,13 +43,10 @@ function* signup() {
     try {
       const { payload, onSuccess } = yield take(AUTH_TYPES.SIGNUP_REQUEST);
 
-      console.log(payload);
-
       const { caller } = ApiService.instance;
 
       yield put(authActions.signupSuccess());
     } catch (e) {
-      console.log('Signup error -> ', e);
       yield authActions.signupError(e);
     }
   }
@@ -65,13 +59,10 @@ function* resetPassword() {
         AUTH_TYPES.RESET_PASSWORD_REQUEST,
       );
 
-      console.log(payload);
-
       const { caller } = ApiService.instance;
 
       yield put(authActions.resetPasswordSuccess());
     } catch (e) {
-      console.log('Get token error -> ', e);
       yield authActions.resetPasswordError(e);
     }
   }
@@ -84,13 +75,10 @@ function* changePassword() {
         AUTH_TYPES.CHANGE_PASSWORD_REQUEST,
       );
 
-      console.log(payload);
-
       const { caller } = ApiService.instance;
 
       yield put(authActions.changePasswordSuccess());
     } catch (e) {
-      console.log('Change Password error -> ', e);
       yield authActions.changePasswordError(e);
     }
   }
@@ -113,7 +101,7 @@ function* logout() {
   }
 }
 
-export const AuthSaga = function*() {
+export const AuthSaga = function* () {
   yield all([
     spawn(login),
     spawn(signup),
