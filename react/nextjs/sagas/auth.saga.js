@@ -7,12 +7,14 @@ import { authActions, userActions } from '../actions';
 
 function* login() {
   while (true) {
+    const { payload, onSuccess, onError } = yield take(
+      AUTH_TYPES.LOGIN_REQUEST,
+    );
     try {
-      const { payload, onSuccess } = yield take(AUTH_TYPES.LOGIN_REQUEST);
-
       const { caller } = ApiService.instance;
 
       yield put(authActions.loginSuccess());
+      if (onSuccess && onSuccess instanceof Function) onSuccess();
 
       // const { data } = yield call(caller.post, 'api/omniauth_callbacks', { code: payload.code });
 
@@ -33,53 +35,61 @@ function* login() {
 
       // if (onSuccess && onSuccess instanceof Function) onSuccess();
     } catch (e) {
-      yield authActions.loginError(e);
+      yield put(authActions.loginError(e));
+      if (onError && onError instanceof Function) onError('Cannot find user');
     }
   }
 }
 
 function* signup() {
   while (true) {
+    const { payload, onSuccess, onError } = yield take(
+      AUTH_TYPES.SIGNUP_REQUEST,
+    );
     try {
-      const { payload, onSuccess } = yield take(AUTH_TYPES.SIGNUP_REQUEST);
-
       const { caller } = ApiService.instance;
 
       yield put(authActions.signupSuccess());
+      if (onSuccess && onSuccess instanceof Function)
+        onSuccess('Cannot find user');
     } catch (e) {
-      yield authActions.signupError(e);
+      yield put(authActions.signupError(e));
+      if (onError && onError instanceof Function)
+        onError('User already exists');
     }
   }
 }
 
 function* resetPassword() {
   while (true) {
+    const { payload, onSuccess, onError } = yield take(
+      AUTH_TYPES.RESET_PASSWORD_REQUEST,
+    );
     try {
-      const { payload, onSuccess } = yield take(
-        AUTH_TYPES.RESET_PASSWORD_REQUEST,
-      );
-
       const { caller } = ApiService.instance;
 
       yield put(authActions.resetPasswordSuccess());
+      if (onSuccess && onSuccess instanceof Function) onSuccess();
     } catch (e) {
-      yield authActions.resetPasswordError(e);
+      yield put(authActions.resetPasswordError(e));
+      if (onError && onError instanceof Function) onError('Cannot find email');
     }
   }
 }
 
 function* changePassword() {
   while (true) {
+    const { payload, onSuccess, onError } = yield take(
+      AUTH_TYPES.CHANGE_PASSWORD_REQUEST,
+    );
     try {
-      const { payload, onSuccess } = yield take(
-        AUTH_TYPES.CHANGE_PASSWORD_REQUEST,
-      );
-
       const { caller } = ApiService.instance;
 
       yield put(authActions.changePasswordSuccess());
+      if (onSuccess && onSuccess instanceof Function) onSuccess();
     } catch (e) {
-      yield authActions.changePasswordError(e);
+      yield put(authActions.changePasswordError(e));
+      if (onError && onError instanceof Function) onError('Cannot find user');
     }
   }
 }
@@ -101,7 +111,7 @@ function* logout() {
   }
 }
 
-export const AuthSaga = function* () {
+export const AuthSaga = function*() {
   yield all([
     spawn(login),
     spawn(signup),

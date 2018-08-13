@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
+import { message } from 'antd';
 
 import * as st from './ForgotPasswordContainer.style';
 import {
@@ -14,28 +15,42 @@ export class ForgotPasswordContainer extends React.Component {
   static propTypes = {
     actions: PropTypes.shape({
       resetPassword: PropTypes.func.isRequired,
-      clearResetPassword: PropTypes.func.isRequired,
-      clearError: PropTypes.func.isRequired,
     }),
     processing: PropTypes.bool.isRequired,
-    isPasswordReset: PropTypes.bool.isRequired,
   };
 
-  componentWillUnmount() {
-    const {
-      actions: { clearResetPassword, clearError },
-    } = this.props;
-    clearResetPassword();
-    clearError();
+  state = {
+    isPasswordReset: false,
+    error: null,
+  };
+
+  componentDidUpdate() {
+    const { error } = this.state;
+    if (error) {
+      message.error(error);
+    }
   }
+
+  onResetPasswordSuccess = () => {
+    this.setState({ isPasswordReset: true, error: null });
+  };
+
+  onResetPasswordError = error => {
+    this.setState({ error });
+  };
 
   onSubmit = email => {
     const { actions } = this.props;
-    actions.resetPassword(email);
+    actions.resetPassword(
+      email,
+      this.onResetPasswordSuccess,
+      this.onResetPasswordError,
+    );
   };
 
   render() {
-    const { processing, isPasswordReset } = this.props;
+    const { processing } = this.props;
+    const { isPasswordReset } = this.state;
     if (isPasswordReset) {
       return (
         <st.ForgotPasswordFormCard>

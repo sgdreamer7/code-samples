@@ -1,9 +1,10 @@
 import { AUTH_TYPES } from '../types';
 
-export const login = (payload, onSuccess) => ({
+export const login = (payload, onSuccess, onError) => ({
   type: AUTH_TYPES.LOGIN_REQUEST,
   payload,
   onSuccess,
+  onError,
 });
 export const loginError = payload => ({
   type: AUTH_TYPES.LOGIN_ERROR,
@@ -14,10 +15,11 @@ export const loginSuccess = payload => ({
   payload,
 });
 
-export const signup = (payload, onSuccess) => ({
+export const signup = (payload, onSuccess, onError) => ({
   type: AUTH_TYPES.SIGNUP_REQUEST,
   payload,
   onSuccess,
+  onError,
 });
 export const signupError = payload => ({
   type: AUTH_TYPES.SIGNUP_ERROR,
@@ -28,10 +30,11 @@ export const signupSuccess = payload => ({
   payload,
 });
 
-export const resetPassword = (payload, onSuccess) => ({
+export const resetPassword = (payload, onSuccess, onError) => ({
   type: AUTH_TYPES.RESET_PASSWORD_REQUEST,
   payload,
   onSuccess,
+  onError,
 });
 export const resetPasswordError = payload => ({
   type: AUTH_TYPES.RESET_PASSWORD_ERROR,
@@ -41,14 +44,12 @@ export const resetPasswordSuccess = payload => ({
   type: AUTH_TYPES.RESET_PASSWORD_SUCCESS,
   payload,
 });
-export const clearResetPassword = () => ({
-  type: AUTH_TYPES.CLEAR_RESET_PASSWORD,
-});
 
-export const changePassword = (payload, onSuccess) => ({
+export const changePassword = (payload, onSuccess, onError) => ({
   type: AUTH_TYPES.CHANGE_PASSWORD_REQUEST,
   payload,
   onSuccess,
+  onError,
 });
 export const changePasswordError = payload => ({
   type: AUTH_TYPES.CHANGE_PASSWORD_ERROR,
@@ -57,13 +58,6 @@ export const changePasswordError = payload => ({
 export const changePasswordSuccess = payload => ({
   type: AUTH_TYPES.CHANGE_PASSWORD_SUCCESS,
   payload,
-});
-export const clearChangePassword = () => ({
-  type: AUTH_TYPES.CLEAR_CHANGE_PASSWORD,
-});
-
-export const clearError = () => ({
-  type: AUTH_TYPES.CLEAR_ERROR,
 });
 
 export const logout = onSuccess => ({

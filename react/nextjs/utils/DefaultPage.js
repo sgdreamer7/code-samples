@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { WithReduxSaga } from './';
+import { WithReduxSaga } from '.';
 import { currentUrl } from '../actions/common.actions';
 import { ContentSection, MainLayout } from '../styles/layouts';
 import '../styles/global';
 
-export const DefaultPage = () => (Page) => {
+export const DefaultPage = () => Page => {
   @WithReduxSaga()
   @connect(state => ({
     common: state.common,

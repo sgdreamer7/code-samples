@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 import isEmail from 'validator/lib/isEmail';
+import { message } from 'antd';
 
 import * as st from './RegistrationContainer.style';
 import { Input, FormField, SubmitButton } from '../../components/Form';
@@ -44,21 +45,32 @@ export class RegistrationContainer extends React.Component {
   static propTypes = {
     actions: PropTypes.shape({
       signup: PropTypes.func.isRequired,
-      clearError: PropTypes.func.isRequired,
     }),
     processing: PropTypes.bool.isRequired,
   };
 
-  componentWillUnmount() {
-    const {
-      actions: { clearError },
-    } = this.props;
-    clearError();
+  state = {
+    error: null,
+  };
+
+  componentDidUpdate() {
+    const { error } = this.state;
+    if (error) {
+      message.error(error);
+    }
   }
+
+  onSignupSuccess = () => {
+    this.setState({ error: null });
+  };
+
+  onSignupError = error => {
+    this.setState({ error });
+  };
 
   onSubmit = authData => {
     const { actions } = this.props;
-    actions.signup(authData);
+    actions.signup(authData, this.onSignupSuccess, this.onSignupError);
   };
 
   render() {

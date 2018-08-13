@@ -2,9 +2,9 @@ import axios from 'axios';
 import { call, put, take } from 'redux-saga/effects';
 import moment from 'moment';
 
-import { UPDATE_TOKEN, UPDATE_TOKEN_SUCCESS } from './../types/auth.types';
-import { API_URL, TOKEN_EXPIRED_TIME } from './../config';
-import { CookieService } from './';
+import { UPDATE_TOKEN, UPDATE_TOKEN_SUCCESS } from '../types/auth.types';
+import { API_URL, TOKEN_EXPIRED_TIME } from '../config';
+import { CookieService } from '.';
 
 const JWT_TOKEN = Symbol('token');
 const INSTANCE = Symbol('instance');
@@ -13,9 +13,13 @@ const FN__PROTECTED_CALL = Symbol('FN__PROTECTED_CALL');
 
 export class ApiService {
   static [INSTANCE] = null;
-  static get instance() { return ApiService[INSTANCE] ? ApiService[INSTANCE] : new ApiService(); }
+
+  static get instance() {
+    return ApiService[INSTANCE] ? ApiService[INSTANCE] : new ApiService();
+  }
 
   caller = null;
+
   [JWT_TOKEN] = null;
 
   constructor(/* request */) {
@@ -35,8 +39,10 @@ export class ApiService {
   }
 
   [FN__APPLY_MIDDLEWARE]() {
-    this.caller.interceptors.request.use((config) => {
-      const tokenHeader = this[JWT_TOKEN] ? { Authorization: `Bearer ${this[JWT_TOKEN]}` } : {};
+    this.caller.interceptors.request.use(config => {
+      const tokenHeader = this[JWT_TOKEN]
+        ? { Authorization: `Bearer ${this[JWT_TOKEN]}` }
+        : {};
       config.headers = {
         'Content-Type': 'application/json',
         ...tokenHeader,
@@ -45,7 +51,8 @@ export class ApiService {
     });
 
     this.caller.interceptors.response.use(
-      response => Promise.resolve({ response: response.data, headers: response.headers }),
+      response =>
+        Promise.resolve({ response: response.data, headers: response.headers }),
       error => Promise.reject(error.response.data),
     );
   }
@@ -53,20 +60,34 @@ export class ApiService {
   /**
    * Check token expiration before each `call` and update it if necessary.
    */
-  [FN__PROTECTED_CALL] = function* (...args) {
+  [FN__PROTECTED_CALL] = function*(...args) {
     const { refresh_token_expired } = CookieService.all();
-    if (moment().diff(parseInt(refresh_token_expired, 10), 'seconds') >= TOKEN_EXPIRED_TIME) {
+    if (
+      moment().diff(parseInt(refresh_token_expired, 10), 'seconds') >=
+      TOKEN_EXPIRED_TIME
+    ) {
       yield put({ type: UPDATE_TOKEN });
       yield take(UPDATE_TOKEN_SUCCESS);
     }
     return yield call(...args);
-  }
+  };
 
   /**
    * Just use these wrapped functions in your sagas to be calm that the token isn't expired.
    */
-  get(...args) { return this[FN__PROTECTED_CALL].bind(this, this.caller.get, ...args); }
-  post(...args) { return this[FN__PROTECTED_CALL].bind(this, this.caller.post, ...args); }
-  put(...args) { return this[FN__PROTECTED_CALL].bind(this, this.caller.put, ...args); }
-  delete(...args) { return this[FN__PROTECTED_CALL].bind(this, this.caller.delete, ...args); }
+  get(...args) {
+    return this[FN__PROTECTED_CALL].bind(this, this.caller.get, ...args);
+  }
+
+  post(...args) {
+    return this[FN__PROTECTED_CALL].bind(this, this.caller.post, ...args);
+  }
+
+  put(...args) {
+    return this[FN__PROTECTED_CALL].bind(this, this.caller.put, ...args);
+  }
+
+  delete(...args) {
+    return this[FN__PROTECTED_CALL].bind(this, this.caller.delete, ...args);
+  }
 }

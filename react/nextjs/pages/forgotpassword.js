@@ -20,9 +20,9 @@ import { DefaultPage } from '../utils';
   }),
   dispatch => ({ actions: bindActionCreators(authActions, dispatch) }),
 )
-export default class Login extends React.Component {
+export default class ForgotPassword extends React.Component {
   static propTypes = {
-    token: PropTypes.string.isRequired,
+    token: PropTypes.string,
   };
 
   static async getInitialProps({ query }) {

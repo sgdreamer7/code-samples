@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 import Link from 'next/link';
+import { message } from 'antd';
 
 import * as st from './ChangePasswordContainer.style';
 import { Input, FormField, SubmitButton } from '../../components/Form';
@@ -37,35 +38,51 @@ export class ChangePasswordContainer extends React.Component {
   static propTypes = {
     actions: PropTypes.shape({
       changePassword: PropTypes.func.isRequired,
-      clearChangePassword: PropTypes.func.isRequired,
-      clearError: PropTypes.func.isRequired,
     }),
     processing: PropTypes.bool.isRequired,
-    isPasswordChanged: PropTypes.bool.isRequired,
   };
 
-  componentWillUnmount() {
-    const {
-      actions: { clearChangePassword, clearError },
-    } = this.props;
-    clearChangePassword();
-    clearError();
+  state = {
+    isPasswordChanged: false,
+    error: null,
+  };
+
+  componentDidUpdate() {
+    const { error } = this.state;
+    if (error) {
+      message.error(error);
+    }
   }
+
+  onChangePasswordSuccess = () => {
+    this.setState({ isPasswordChanged: true, error: null });
+  };
+
+  onChangePasswordError = error => {
+    this.setState({ error });
+  };
 
   onSubmit = data => {
     const { actions } = this.props;
-    actions.changePassword(data);
+    actions.changePassword(
+      data,
+      this.onChangePasswordSuccess,
+      this.onChangePasswordError,
+    );
   };
 
   render() {
-    const { processing, isPasswordChanged } = this.props;
+    const { processing } = this.props;
+    const { isPasswordChanged } = this.state;
     if (isPasswordChanged) {
       return (
         <st.ChangePasswordFormCard>
           <st.Msg>
             Your password was changed. Please go to the{' '}
-            <Link href="/login">login</Link> page and try to login using new
-            password
+            <Link href="/login">
+              <a>login</a>
+            </Link>{' '}
+            page and try to login using new password
           </st.Msg>
         </st.ChangePasswordFormCard>
       );

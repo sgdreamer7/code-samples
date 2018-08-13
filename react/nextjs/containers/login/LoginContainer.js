@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 import Link from 'next/link';
+import { message } from 'antd';
 
 import * as st from './LoginContainer.style';
 import {
@@ -15,21 +16,32 @@ export class LoginContainer extends React.Component {
   static propTypes = {
     actions: PropTypes.shape({
       login: PropTypes.func.isRequired,
-      clearError: PropTypes.func.isRequired,
     }),
     processing: PropTypes.bool.isRequired,
   };
 
-  componentWillUnmount() {
-    const {
-      actions: { clearError },
-    } = this.props;
-    clearError();
+  state = {
+    error: null,
+  };
+
+  componentDidUpdate() {
+    const { error } = this.state;
+    if (error) {
+      message.error(error);
+    }
   }
+
+  onLoginSuccess = () => {
+    this.setState({ error: null });
+  };
+
+  onLoginError = error => {
+    this.setState({ error });
+  };
 
   onSubmit = authData => {
     const { actions } = this.props;
-    actions.login(authData);
+    actions.login(authData, this.onLoginSuccess, this.onLoginError);
   };
 
   render() {
@@ -63,8 +75,12 @@ export class LoginContainer extends React.Component {
                 </SubmitButton>
               </st.SubmitButtonWrapper>
               <st.LinksWrapper>
-                <Link href="/registration">Click to register</Link>
-                <Link href="/forgotpassword">Forgot your password?</Link>
+                <Link href="/registration">
+                  <a>Click to register</a>
+                </Link>
+                <Link href="/forgotpassword">
+                  <a>Forgot your password?</a>
+                </Link>
               </st.LinksWrapper>
             </form>
           </st.LoginFormCard>

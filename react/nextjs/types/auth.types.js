@@ -22,8 +22,6 @@ export const CHANGE_PASSWORD_ERROR =
 export const CLEAR_CHANGE_PASSWORD =
   '@nextjs-example/AUTH/CLEAR_CHANGE_PASSWORD';
 
-export const CLEAR_ERROR = '@nextjs-example/AUTH/CLEAR_ERROR';
-
 export const LOGOUT_REQUEST = '@nextjs-example/AUTH/LOGOUT_REQUEST';
 export const CHANGE_USER_AUTH = '@nextjs-example/AUTH/CHANGE_USER_AUTH';
 
