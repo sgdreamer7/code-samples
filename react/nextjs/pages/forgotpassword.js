@@ -28,12 +28,10 @@ export default class Login extends React.Component {
   static async getInitialProps({ query }) {
     try {
       const { token } = query;
-      console.log('token --> ', token);
       if (!token) throw new Error("Can't find token.");
       if (token) return { token };
       return null;
     } catch (error) {
-      console.log(error);
       return { error };
     }
   }
