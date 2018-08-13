@@ -1,2 +1,2 @@
-export { userActions } from './actions';
-export { UserReducer } from './reducer';
+export { userActions } from './actions'
+export { UserReducer } from './reducer'

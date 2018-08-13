@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from 'axios'
 
-export const  request = function ({method, url, data}){
-    return axios({
-      method,
-      url,
-      data
-    });  
+export const request = function ({method, url, data}) {
+  return axios({
+    method,
+    url,
+    data
+  })
 }

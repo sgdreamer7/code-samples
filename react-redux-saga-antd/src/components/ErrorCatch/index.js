@@ -1,2 +1,2 @@
-import ErrorCatch from './ErrorCatch';
-export default ErrorCatch;
+import ErrorCatch from './ErrorCatch'
+export default ErrorCatch

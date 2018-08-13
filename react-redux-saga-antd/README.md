@@ -13,7 +13,7 @@ For starting webpack development server:
 ``` shell
 $ npm start
 ```
-Webpack server will be available at localhost:8080
+Webpack server will be available at localhost:8000
 
 For running client-side build:
 ``` shell
