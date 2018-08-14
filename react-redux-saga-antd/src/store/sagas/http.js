@@ -1,6 +1,6 @@
-import {all, call, fork, put, take} from 'redux-saga/effects'
-import {userActions} from './user'
-import {request} from '../utils/http'
+import {call, fork, put, spawn, take} from 'redux-saga/effects'
+import {userActions} from '../user'
+import {request} from '../../utils/http'
 
 function * sendRequest (data) {
   try {
@@ -26,11 +26,5 @@ function * watchSendRequest () {
 // -------------------------------------
 
 export const http = [
-  fork(watchSendRequest)
+  spawn(watchSendRequest)
 ]
-
-export default function * sagas () {
-  yield all([
-    ...http
-  ])
-}
