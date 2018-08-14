@@ -1,11 +1,27 @@
 {
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react"
+  ],
   "parser": "babel-eslint",
   "plugins": [
     "import",
-    "react"
+    "react",
+    "prettier"
   ],
   "rules": {
+    "jsx-a11y/anchor-is-valid": 0,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/require-default-props": 0,
     "experimentalDecorators": true,
     "camelcase": 0,
     "no-param-reassign": [
@@ -31,6 +47,14 @@
     "react/jsx-uses-vars": [
       2
     ],
-    "class-methods-use-this": 0
+    "class-methods-use-this": 0,
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "all",
+        "jsxBracketSameLine": true
+      }
+    ]
   }
 }

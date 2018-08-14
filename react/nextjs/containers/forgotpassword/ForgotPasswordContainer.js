@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
-import Link from 'next/link';
 import { message } from 'antd';
 
-import * as st from './LoginContainer.style';
+import * as st from './ForgotPasswordContainer.style';
 import {
   Input,
   FormField,
@@ -12,15 +11,16 @@ import {
   Validators,
 } from '../../components/Form';
 
-export class LoginContainer extends React.Component {
+export class ForgotPasswordContainer extends React.Component {
   static propTypes = {
     actions: PropTypes.shape({
-      login: PropTypes.func.isRequired,
+      resetPassword: PropTypes.func.isRequired,
     }),
     processing: PropTypes.bool.isRequired,
   };
 
   state = {
+    isPasswordReset: false,
     error: null,
   };
 
@@ -31,38 +31,44 @@ export class LoginContainer extends React.Component {
     }
   }
 
-  onLoginSuccess = () => {
-    this.setState({ error: null });
+  onResetPasswordSuccess = () => {
+    this.setState({ isPasswordReset: true, error: null });
   };
 
-  onLoginError = error => {
+  onResetPasswordError = error => {
     this.setState({ error });
   };
 
-  onSubmit = authData => {
+  onSubmit = email => {
     const { actions } = this.props;
-    actions.login(authData, this.onLoginSuccess, this.onLoginError);
+    actions.resetPassword(
+      email,
+      this.onResetPasswordSuccess,
+      this.onResetPasswordError,
+    );
   };
 
   render() {
     const { processing } = this.props;
+    const { isPasswordReset } = this.state;
+    if (isPasswordReset) {
+      return (
+        <st.ForgotPasswordFormCard>
+          <st.Msg>Check your email</st.Msg>
+        </st.ForgotPasswordFormCard>
+      );
+    }
     return (
       <Form
         onSubmit={this.onSubmit}
         render={({ handleSubmit }) => (
-          <st.LoginFormCard>
+          <st.ForgotPasswordFormCard title="Forgot your password?">
+            <st.HeaderWrapper>Please write your email</st.HeaderWrapper>
             <form onSubmit={handleSubmit}>
               <FormField
                 name="email"
                 validate={Validators.required()}
                 placeholder="Email"
-                component={Input}
-              />
-              <FormField
-                name="password"
-                validate={Validators.required()}
-                placeholder="Password"
-                type="password"
                 component={Input}
               />
               <st.SubmitButtonWrapper>
@@ -71,19 +77,11 @@ export class LoginContainer extends React.Component {
                   htmlType="submit"
                   onClick={handleSubmit}
                   loading={processing}>
-                  Sign In
+                  Submit
                 </SubmitButton>
               </st.SubmitButtonWrapper>
-              <st.LinksWrapper>
-                <Link href="/registration">
-                  <a>Click to register</a>
-                </Link>
-                <Link href="/forgotpassword">
-                  <a>Forgot your password?</a>
-                </Link>
-              </st.LinksWrapper>
             </form>
-          </st.LoginFormCard>
+          </st.ForgotPasswordFormCard>
         )}
       />
     );

@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
-import isEmail from 'validator/lib/isEmail';
+import Link from 'next/link';
 import { message } from 'antd';
 
-import * as st from './RegistrationContainer.style';
+import * as st from './ChangePasswordContainer.style';
 import { Input, FormField, SubmitButton } from '../../components/Form';
 import { errorsConst, commonConst } from '../../constants';
 
-const validate = ({ email, password, confirmPassword }) => {
+const validate = ({ password, confirmPassword }) => {
   const {
     REQUIRED_FIELD,
-    EMAIL_NOT_CORRECT,
     PASSWORD_NOT_CORRECT,
     CONFIRM_PASSWORD,
     CONFIRM_PASSWORD_NOT_MATCH,
@@ -19,12 +18,6 @@ const validate = ({ email, password, confirmPassword }) => {
   const { PASSWORD_REGEXP } = commonConst;
 
   const errors = {};
-
-  if (!email) {
-    errors.email = REQUIRED_FIELD;
-  } else if (!isEmail(email)) {
-    errors.email = EMAIL_NOT_CORRECT;
-  }
 
   if (!password) {
     errors.password = REQUIRED_FIELD;
@@ -41,15 +34,16 @@ const validate = ({ email, password, confirmPassword }) => {
   return errors;
 };
 
-export class RegistrationContainer extends React.Component {
+export class ChangePasswordContainer extends React.Component {
   static propTypes = {
     actions: PropTypes.shape({
-      signup: PropTypes.func.isRequired,
+      changePassword: PropTypes.func.isRequired,
     }),
     processing: PropTypes.bool.isRequired,
   };
 
   state = {
+    isPasswordChanged: false,
     error: null,
   };
 
@@ -60,32 +54,49 @@ export class RegistrationContainer extends React.Component {
     }
   }
 
-  onSignupSuccess = () => {
-    this.setState({ error: null });
+  onChangePasswordSuccess = () => {
+    this.setState({ isPasswordChanged: true, error: null });
   };
 
-  onSignupError = error => {
+  onChangePasswordError = error => {
     this.setState({ error });
   };
 
-  onSubmit = authData => {
+  onSubmit = data => {
     const { actions } = this.props;
-    actions.signup(authData, this.onSignupSuccess, this.onSignupError);
+    actions.changePassword(
+      data,
+      this.onChangePasswordSuccess,
+      this.onChangePasswordError,
+    );
   };
 
   render() {
     const { processing } = this.props;
+    const { isPasswordChanged } = this.state;
+    if (isPasswordChanged) {
+      return (
+        <st.ChangePasswordFormCard>
+          <st.Msg>
+            Your password was changed. Please go to the{' '}
+            <Link href="/login">
+              <a>login</a>
+            </Link>{' '}
+            page and try to login using new password
+          </st.Msg>
+        </st.ChangePasswordFormCard>
+      );
+    }
     return (
       <Form
         onSubmit={this.onSubmit}
         validate={validate}
         render={({ handleSubmit }) => (
-          <st.RegistrationFormCard>
+          <st.ChangePasswordFormCard>
             <form onSubmit={handleSubmit}>
-              <FormField name="email" placeholder="Email" component={Input} />
               <FormField
                 name="password"
-                placeholder="Password"
+                placeholder="New Password"
                 type="password"
                 component={Input}
               />
@@ -101,11 +112,11 @@ export class RegistrationContainer extends React.Component {
                   htmlType="submit"
                   onClick={handleSubmit}
                   loading={processing}>
-                  Registration
+                  Change
                 </SubmitButton>
               </st.SubmitButtonWrapper>
             </form>
-          </st.RegistrationFormCard>
+          </st.ChangePasswordFormCard>
         )}
       />
     );

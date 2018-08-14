@@ -1,8 +1,6 @@
-import { AUTH_TYPES as TYPES } from './../types';
+import { AUTH_TYPES as TYPES } from '../types';
 
 const initialState = {
-  signupError: null,
-  loginError: null,
   isAuth: false,
   processing: false,
 };
@@ -10,22 +8,31 @@ const initialState = {
 export const AuthReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case TYPES.CLEAR_ERROR:
-      return { ...state, signupError: null };
     case TYPES.SIGNUP_ERROR:
-      return { ...state, signupError: payload };
+    case TYPES.LOGIN_ERROR:
+    case TYPES.RESET_PASSWORD_ERROR:
+    case TYPES.CHANGE_PASSWORD_ERROR:
+      return { ...state, processing: false };
+
     case TYPES.CHANGE_USER_AUTH:
       return { ...state, isAuth: payload };
+
     case TYPES.LOGIN_REQUEST:
     case TYPES.SIGNUP_REQUEST:
-      return { ...state, processing: true };
+    case TYPES.CHANGE_PASSWORD_REQUEST:
+    case TYPES.RESET_PASSWORD_REQUEST:
+      return {
+        ...state,
+        processing: true,
+      };
+
+    case TYPES.RESET_PASSWORD_SUCCESS:
     case TYPES.LOGIN_SUCCESS:
     case TYPES.SIGNUP_SUCCESS:
+    case TYPES.CHANGE_PASSWORD_SUCCESS:
       return { ...state, processing: false };
-    case TYPES.LOGIN_ERROR:
-      return { ...state, loginError: payload, processing: false };
-    case TYPES.CLEAR_LOGIN_ERROR:
-      return { ...state, loginError: null };
-    default: return state;
+
+    default:
+      return state;
   }
 };
