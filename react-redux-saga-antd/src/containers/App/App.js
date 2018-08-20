@@ -4,8 +4,8 @@ import './App.css'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom';
-import {getUser} from '../../store/user/selectors'
-import {userActions} from '../../store/user'
+import { getUser } from '../../store/user/selectors'
+import { userActions } from '../../store/user'
 
 const mapStateToProps = ((state)=>({  
   user: getUser(state)  
