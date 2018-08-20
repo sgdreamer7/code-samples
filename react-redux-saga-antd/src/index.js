@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import configureStore from './store'
 import './index.less'
 import registerServiceWorker from './registerServiceWorker'
-import App from './containers/App'
+import Routes from './routes'
 import ErrorCatch from './components/ErrorCatch'
 
 const store = configureStore()
@@ -12,7 +12,7 @@ const store = configureStore()
 const Init = () => (
   <Provider store={store}>
     <ErrorCatch>
-      <App />
+      <Routes />
     </ErrorCatch>
   </Provider>
 )

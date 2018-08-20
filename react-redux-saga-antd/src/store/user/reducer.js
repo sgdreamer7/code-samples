@@ -1,4 +1,4 @@
-import {userActions} from './actions'
+import { userActions } from './actions'
 
 export const UsersState = () => ({
   user: {},
@@ -8,7 +8,6 @@ export const UsersState = () => ({
 export function UserReducer (state = new UsersState(), {payload, type}) {
   switch (type) {
     case userActions.SIGN_IN_FULFILED:
-      if (payload.resp.token) localStorage.setItem('token', payload.resp.token)
       return {
         ...state,
         user: payload.resp.user

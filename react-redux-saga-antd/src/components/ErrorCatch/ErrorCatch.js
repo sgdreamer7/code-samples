@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Icon} from '../../utils/antd'
+import { Icon } from '../../utils/antd'
 import './styles.less'
 
 class ErrorCatch extends Component {

@@ -1,15 +1,14 @@
-import React, { Component } from 'react'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router'
-import { Switch, Route, Redirect, Link } from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import App from '../containers/App'
 
 const Routes = (props) => {
   return (
-    <main>
+    <Router>
       <Switch>
-        <Route exact path='/' component={() => <div>First Page</div>} />
+        <Route exact path='/' component={App} />
       </Switch>
-    </main>
+    </Router>
   )
 }
 
