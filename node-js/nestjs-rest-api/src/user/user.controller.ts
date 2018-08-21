@@ -36,8 +36,7 @@ export class UserController {
   async update(@Body() userDto: UpdateUserDto, @Param('id') userId: number): Promise<User> {
     const user = await this.userService.findById(userId);
     if (!user) throw new HttpException('Can\'t find user with this id', HttpStatus.BAD_REQUEST);
-    const createdUser = await this.userService.create(userDto);
-    return this.userService.findById(createdUser.id);
+    return this.userService.update(userDto);
   }
 
   @Delete('/:id')
