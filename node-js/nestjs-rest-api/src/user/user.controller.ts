@@ -24,7 +24,7 @@ export class UserController {
   @Post()
   @ApiOperation({ title: 'Create / register a new user' })
   async create(@Body() userDto: CreateUserDto): Promise<User> {
-    const user = this.userService.findByEmail(userDto.email);
+    const user = await this.userService.findByEmail(userDto.email);
     if (user) throw new HttpException('User with this email already registered', HttpStatus.BAD_REQUEST);
     return this.userService.create(userDto);
   }
@@ -34,7 +34,7 @@ export class UserController {
   @ApiBearerAuth()
   @ApiOperation({ title: 'Update an existing user' })
   async update(@Body() userDto: UpdateUserDto, @Param('id') userId: number): Promise<User> {
-    const user = this.userService.findById(userId);
+    const user = await this.userService.findById(userId);
     if (!user) throw new HttpException('Can\'t find user with this id', HttpStatus.BAD_REQUEST);
     return this.userService.update(userDto);
   }
