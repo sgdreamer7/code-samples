@@ -2,7 +2,6 @@ package com.incode.crm.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
-import javax.validation.constraints.NotBlank
 
 @Entity
 data class User(
@@ -11,7 +10,6 @@ data class User(
     val id: Int?,
 
     @Column(unique = true)
-    @get: NotBlank
     val email: String,
 
     @JsonIgnore
