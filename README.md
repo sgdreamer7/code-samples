@@ -10,6 +10,10 @@
 
 - [NGRX example](./angular/angular-ngrx)
 
+### VueJS
+
+- [VueJS/VueX sample code](./vue/vue-js-example)
+
 ### Python
 
 ### NodeJS
