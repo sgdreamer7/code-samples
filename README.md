@@ -20,3 +20,11 @@
 
 - [Simple Stripe wrapper](./golang/go-stripe)
 - [Account REST Service](./golang/accounts-service)
+
+### Erlang
+
+- [Time Series Storage](./erlang/tss)
+
+### Kotlin
+
+- [Simple REST API based on Spring Framework](./kotlin/crm)

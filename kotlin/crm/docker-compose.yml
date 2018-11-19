@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  db:
+    container_name: incode_crm_db
+    hostname: incode_crm_db
+    image: mysql:5.7
+    volumes:
+    - crm_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: incode_crm
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+    - "3306:3306"
+
+volumes:
+  crm_data:
