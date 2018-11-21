@@ -1,8 +1,12 @@
-from .views import UserViewSet, DeviceProducerViewSet, DeviceModelViewSet
+from django.urls import path
+from .views import UserViewSet, WebSockerInfoList
 from rest_framework.routers import DefaultRouter
+
+
+urlpatterns = [
+    path('info/', WebSockerInfoList.as_view())
+]
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet, base_name='user')
-router.register(r'device-producers', DeviceProducerViewSet, base_name='device-producer')
-router.register(r'device-models', DeviceModelViewSet, base_name='device-model')
-urlpatterns = router.urls
+urlpatterns += router.urls
