@@ -16,7 +16,7 @@
 
 ### Python
 
-- [Django REST exampled](./python/django-rest)
+- [Django REST example](./python/django-rest)
 - [Django/Celery/DRF code samples](./python/code-samples)
 
 ### NodeJS
