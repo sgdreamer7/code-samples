@@ -1,4 +1,7 @@
 class PushNotificationsMiddleware:
+    """
+    Middleware that generate push notifications based on URL paths and send notifications to mobile phones.
+    """
     
     def __init__(self, get_response):
         self.get_response = get_response

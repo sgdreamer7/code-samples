@@ -18,6 +18,5 @@
 ### Run locally
 
 ```
-  $ docker-compose build
   $ docker-compose up
 ```

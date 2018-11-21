@@ -1,4 +1,8 @@
 class MapsServicesSerializer(serializers.ModelSerializer):
+    """
+    Serializer for admin map page. Contains data that will be displayed in Google Map.
+    """
+    
     driver_path = serializers.SerializerMethodField()
     service_descr = ServiceNamingSerializer(required=False)
     assign_to = MapCustomerSerializer(read_only=True)

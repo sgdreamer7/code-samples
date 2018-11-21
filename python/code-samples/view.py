@@ -1,4 +1,8 @@
-class CustomerActive(viewsets.ModelViewSet):
+class ActiveServices(viewsets.ModelViewSet):
+    """
+    Get only active customer's services
+    """
+
     queryset = Services.objects.all()
     serializer_class = CutterServicesSerializer
     permission_classes = (IsAuthenticated, CustomerAccessPermission)
@@ -14,6 +18,9 @@ class CustomerActive(viewsets.ModelViewSet):
 
 
 class CompanyServicesDetail(viewsets.ModelViewSet):
+    """
+    Get company details by ID
+    """
 
     queryset = Company.objects.all()
     serializer_class = CompanyWithServicesSerializer
@@ -28,6 +35,9 @@ class CompanyServicesDetail(viewsets.ModelViewSet):
             return Response(company_data.data, status=status.HTTP_200_OK)
 
 class ChangeHeadquarterViewSet(GenericViewSet, mixins.UpdateModelMixin):
+    """
+    Update headquarter office of company
+    """
     queryset = Company.objects.all()
     serializer_class = CompanyWithHeadquarterSerializer
     lookup_field = 'name'

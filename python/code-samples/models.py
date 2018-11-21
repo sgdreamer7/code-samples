@@ -1,4 +1,8 @@
 class Company(models.Model):
+    """
+    Simple company model.
+    """
+
     picture = models.ImageField(upload_to=IMAGE_PATH, blank=True)
     naming = models.CharField('naming', max_length=100, default="")
 
@@ -7,6 +11,10 @@ class Company(models.Model):
 
 
 class ServicesNaming(models.Model):
+    """
+    Simple service naming for each company.
+    """
+
     naming = models.CharField('naming', max_length=100, unique=False)
     description = models.CharField('description', max_length=300)
     cost = models.DecimalField('cost', max_digits=5, decimal_places=2, default=0)
@@ -17,6 +25,10 @@ class ServicesNaming(models.Model):
         return self.naming
 
 class DriverUser(OurUser):
+    """
+    Driver user model. Inheritance from OurUser abstract model.
+    """
+    
     STATUSES = (
         ('Active', 'Active'),
         ('Pending', 'Pending'),
