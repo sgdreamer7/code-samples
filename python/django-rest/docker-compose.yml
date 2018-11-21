@@ -1,10 +1,11 @@
 version: '3'
 
 services:
+  redis:
+    image: redis
   db:
-    image: "sameersbn/postgresql:9.6-2"
-    container_name: reports_db_v2
-    hostname: reports_db_v2
+    image: postgres:9.6.2-alpine
+    container_name: reports_db
     restart: always
     env_file:
       - ./docker/environments
@@ -13,24 +14,12 @@ services:
     ports:
       - "5432:5432"
   api:
-    build: ./api
-    container_name: ddc_api
-    hostname: ddc_api
-    volumes:
-      - ./api:/api
+    build: .
+    container_name: api
     ports:
       - "8000:8000"
-    env_file:
-      - ./docker/environments
     depends_on:
+      - redis
       - db
-  frontend:
-    build: ./frontend
-    container_name: ddc_frontend
-    hostname: ddc_frontend
-    ports:
-      - "3000:3000"
     env_file:
       - ./docker/environments
-    depends_on:
-      - api
