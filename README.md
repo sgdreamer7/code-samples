@@ -16,6 +16,9 @@
 
 ### Python
 
+- [Django REST exampled](./python/django-rest)
+- [Django/Celery/DRF code samples](./python/code-samples)
+
 ### NodeJS
 
 - [REST API TypeScript using example](./node-js/nestjs-rest-api)
