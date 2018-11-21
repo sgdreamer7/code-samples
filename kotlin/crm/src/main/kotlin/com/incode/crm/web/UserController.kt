@@ -21,9 +21,8 @@ class UserController @Autowired constructor(
   fun fetchAll(): ResponseEntity<List<User>> = ResponseEntity.ok(userService.findAll())
 
   @GetMapping("/{id}")
-  fun fetchById(@PathVariable(value = "id", required = true) id: Int): ResponseEntity<Optional<User>> {
-    val user = userService.findById(id)
-    if (!user.isPresent) throw ResponseStatusException(HttpStatus.NOT_FOUND, "User was not found.")
+  fun fetchById(@PathVariable(value = "id", required = true) id: Int): ResponseEntity<User> {
+    val user = userService.findById(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "User was not found.")
     return ResponseEntity.ok(user)
   }
 

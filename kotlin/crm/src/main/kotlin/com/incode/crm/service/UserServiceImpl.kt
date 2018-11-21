@@ -20,7 +20,7 @@ class UserServiceImpl : UserService {
   }
 
   override fun findAll(): List<User> = this.repository.findAll()
-  override fun findById(id: Int): Optional<User> = repository.findById(id)
-  override fun findByEmail(email: String): User? = repository.findOneByEmail(email)
+  override fun findById(id: Int): User? = this.repository.findById(id).orElse(null)
+  override fun findByEmail(email: String): User? = this.repository.findOneByEmail(email)
 
 }
