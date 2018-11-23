@@ -2,6 +2,10 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+
+JWT_SECRET_KEY = 'incode-secret'  # Change this!
+
+
 DB_NAME = os.environ.get('POSTGRES_DB', 'flask_restful')
 DB_USER = os.environ.get('POSTGRES_USER', 'api_user')
 DB_PASSWORD = os.environ.get('POSTGRES_PASSWORD', 'incode2015')

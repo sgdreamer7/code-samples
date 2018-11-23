@@ -5,6 +5,7 @@ from models import CategorySchema, Category, db
 categories_schema = CategorySchema(many=True)
 category_schema = CategorySchema()
 
+
 class CategoryResource(Resource):
 
     def get(self):
