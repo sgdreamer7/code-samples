@@ -51,27 +51,19 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return '{}'.format(self.email)
 
-
-class DeviceProducer(models.Model):
-    title = models.CharField(max_length=255, unique=True)
-
-    def __str__(self):
-        return '{}'.format(self.title)
-
-
-class DeviceModel(models.Model):
-    title = models.CharField(max_length=255)
-    url = models.CharField(max_length=255)
-    producer = models.ForeignKey(DeviceProducer, on_delete=models.CASCADE)
+class UserProfile(models.Model):
+    avatar = models.ImageField()
+    age = models.PositiveIntegerField()
+    user_info = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '{}'.format(self.title)
+        return 'First name:{} Last name:{} ID:{} Email:{}'.format(self.user_info.first_name,
+                                                                  self.user_info.last_name,
+                                                                  self.pk,
+                                                                  self.user_info.email)
 
 
-class Driver(models.Model):
-    title = models.CharField(max_length=255)
-    version = models.CharField(max_length=50)
-    model = models.ForeignKey(DeviceModel, on_delete=models.CASCADE)
+class Info(models.Model):
+    some_field1 = models.CharField(max_length=100)
+    some_field2 = models.IntegerField()
 
-    def __str__(self):
-        return '{}'.format(self.title)

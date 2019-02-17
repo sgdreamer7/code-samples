@@ -1,26 +1,36 @@
 from rest_framework import serializers
 
-from .models import User, DeviceProducer, DeviceModel
+from .models import UserProfile, User, Info
 
 
 class UserSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = User
+        fields = ("first_name", "last_name", "email")
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    user_info = UserSerializer(required=True)
+
+    def create(self, validated_data):
+        user_info_data = validated_data.pop('user_info')
+        user_info = User.objects.create(**user_info_data)
+        user_info.save()
+
+        user_profile = UserProfile.objects.create(user_info=user_info, **validated_data)
+        user_profile.save()
+
+        return user_profile
+
+    class Meta:
+        model = UserProfile
         fields = (
-            'id', 'email', 'first_name', 'last_name',
+            'avatar', 'age', 'user_info',
         )
 
 
-class DeviceProducerSerializer(serializers.ModelSerializer):
+class InfoSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = DeviceProducer
-        fields = ('id', 'title')
-
-
-class DeviceModelSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = DeviceModel
-        fields = ('id', 'title', 'url')
+        model = Info
+        exclude = ('id',)

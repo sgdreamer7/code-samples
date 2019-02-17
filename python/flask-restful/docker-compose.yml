@@ -1,11 +1,8 @@
 version: '3'
 
 services:
-  redis:
-    image: redis
   db:
     image: postgres:9.6.2-alpine
-    container_name: reports_db
     restart: always
     env_file:
       - ./docker/environments
@@ -15,11 +12,9 @@ services:
       - "5432:5432"
   api:
     build: .
-    container_name: api
     ports:
       - "8000:8000"
     depends_on:
-      - redis
       - db
     env_file:
       - ./docker/environments

@@ -7,6 +7,6 @@ import java.util.*
 interface UserService {
   fun create(userDto: CreateUserDto): User
   fun findAll(): List<User>
-  fun findById(id: Int): Optional<User>
+  fun findById(id: Int): User?
   fun findByEmail(email: String): User?
 }
